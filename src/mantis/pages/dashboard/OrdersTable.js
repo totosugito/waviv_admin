@@ -5,9 +5,6 @@ import { Link as RouterLink } from 'react-router-dom';
 // material-ui
 import { Box, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
-// third-party
-import NumberFormat from 'react-number-format';
-
 // project import
 import Dot from 'mantis/components/@extended/Dot';
 
@@ -211,7 +208,7 @@ export default function OrderTable() {
                                         <OrderStatus status={row.carbs} />
                                     </TableCell>
                                     <TableCell align="right">
-                                        <NumberFormat value={row.protein} displayType="text" thousandSeparator prefix="$" />
+                                        ${row.protein.toLocaleString()}
                                     </TableCell>
                                 </TableRow>
                             );

@@ -1,23 +1,6 @@
-// assets
-import {
-    AppstoreAddOutlined,
-    AntDesignOutlined,
-    BarcodeOutlined,
-    BgColorsOutlined,
-    FontSizeOutlined,
-    LoadingOutlined
-} from '@ant-design/icons';
-
-// icons
-const icons = {
-    FontSizeOutlined,
-    BgColorsOutlined,
-    BarcodeOutlined,
-    AntDesignOutlined,
-    LoadingOutlined,
-    AppstoreAddOutlined
-};
-
+import TextFieldsIcon from '@mui/icons-material/TextFields';
+import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
+import BrandingWatermarkIcon from '@mui/icons-material/BrandingWatermark';
 // ==============================|| MENU ITEMS - UTILITIES ||============================== //
 
 const utilities = {
@@ -30,30 +13,22 @@ const utilities = {
             title: 'Typography',
             type: 'item',
             url: '/typography',
-            icon: icons.FontSizeOutlined
+            icon: TextFieldsIcon
         },
         {
             id: 'util-color',
             title: 'Color',
             type: 'item',
             url: '/color',
-            icon: icons.BgColorsOutlined
+            icon: FormatColorFillIcon
         },
         {
             id: 'util-shadow',
             title: 'Shadow',
             type: 'item',
             url: '/shadow',
-            icon: icons.BarcodeOutlined
+            icon: BrandingWatermarkIcon
         },
-        {
-            id: 'ant-icons',
-            title: 'Ant Icons',
-            type: 'item',
-            url: '/icons/ant',
-            icon: icons.AntDesignOutlined,
-            breadcrumbs: false
-        }
     ]
 };
 

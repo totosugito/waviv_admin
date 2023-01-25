@@ -14,7 +14,6 @@ const SamplePage = Loadable(lazy(() => import('mantis/pages/extra-pages/SamplePa
 const Typography = Loadable(lazy(() => import('mantis/pages/components-overview/Typography')));
 const Color = Loadable(lazy(() => import('mantis/pages/components-overview/Color')));
 const Shadow = Loadable(lazy(() => import('mantis/pages/components-overview/Shadow')));
-const AntIcons = Loadable(lazy(() => import('mantis/pages/components-overview/AntIcons')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -51,10 +50,6 @@ const MainRoutes = {
             path: 'typography',
             element: <Typography />
         },
-        {
-            path: 'icons/ant',
-            element: <AntIcons />
-        }
     ]
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import {Link as RouterLink} from 'react-router-dom';
 
 // material-ui
 import {
@@ -20,14 +20,13 @@ import {
 
 // third party
 import * as Yup from 'yup';
-import { Formik } from 'formik';
+import {Formik} from 'formik';
 
 // project import
 import FirebaseSocial from './FirebaseSocial';
-import AnimateButton from 'mantis/components/@extended/AnimateButton';
 
 // assets
-import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import {EyeOutlined, EyeInvisibleOutlined} from '@ant-design/icons';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
@@ -55,18 +54,18 @@ const AuthLogin = () => {
                     email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
                     password: Yup.string().max(255).required('Password is required')
                 })}
-                onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+                onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
                     try {
-                        setStatus({ success: false });
+                        setStatus({success: false});
                         setSubmitting(false);
                     } catch (err) {
-                        setStatus({ success: false });
-                        setErrors({ submit: err.message });
+                        setStatus({success: false});
+                        setErrors({submit: err.message});
                         setSubmitting(false);
                     }
                 }}
             >
-                {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
+                {({errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values}) => (
                     <form noValidate onSubmit={handleSubmit}>
                         <Grid container spacing={3}>
                             <Grid item xs={12}>
@@ -111,7 +110,7 @@ const AuthLogin = () => {
                                                     edge="end"
                                                     size="large"
                                                 >
-                                                    {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                                                    {showPassword ? <EyeOutlined/> : <EyeInvisibleOutlined/>}
                                                 </IconButton>
                                             </InputAdornment>
                                         }
@@ -125,7 +124,7 @@ const AuthLogin = () => {
                                 </Stack>
                             </Grid>
 
-                            <Grid item xs={12} sx={{ mt: -1 }}>
+                            <Grid item xs={12} sx={{mt: -1}}>
                                 <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
                                     <FormControlLabel
                                         control={
@@ -150,19 +149,17 @@ const AuthLogin = () => {
                                 </Grid>
                             )}
                             <Grid item xs={12}>
-                                <AnimateButton>
-                                    <Button
-                                        disableElevation
-                                        disabled={isSubmitting}
-                                        fullWidth
-                                        size="large"
-                                        type="submit"
-                                        variant="contained"
-                                        color="primary"
-                                    >
-                                        Login
-                                    </Button>
-                                </AnimateButton>
+                                <Button
+                                    disableElevation
+                                    disabled={isSubmitting}
+                                    fullWidth
+                                    size="large"
+                                    type="submit"
+                                    variant="contained"
+                                    color="primary"
+                                >
+                                    Login
+                                </Button>
                             </Grid>
                             <Grid item xs={12}>
                                 <Divider>
@@ -170,7 +167,7 @@ const AuthLogin = () => {
                                 </Divider>
                             </Grid>
                             <Grid item xs={12}>
-                                <FirebaseSocial />
+                                <FirebaseSocial/>
                             </Grid>
                         </Grid>
                     </form>

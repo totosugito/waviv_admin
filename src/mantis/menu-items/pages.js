@@ -1,11 +1,6 @@
 // assets
-import { LoginOutlined, ProfileOutlined } from '@ant-design/icons';
-
-// icons
-const icons = {
-    LoginOutlined,
-    ProfileOutlined
-};
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
 
@@ -19,7 +14,7 @@ const pages = {
             title: 'Login',
             type: 'item',
             url: '/login',
-            icon: icons.LoginOutlined,
+            icon: LockOpenIcon,
             target: true
         },
         {
@@ -27,7 +22,7 @@ const pages = {
             title: 'Register',
             type: 'item',
             url: '/register',
-            icon: icons.ProfileOutlined,
+            icon: HowToRegIcon,
             target: true
         }
     ]

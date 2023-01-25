@@ -61,7 +61,7 @@ const ComponentColor = () => (
     <ComponentSkeleton>
         <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={4}>
-                <MainCard title="Primary Color" codeHighlight>
+                <MainCard title="Primary Color">
                     <Stack>
                         <ColorBox bgcolor="primary.lighter" data={{ label: 'Blue-1', color: '#e6f7ff' }} title="primary.lighter" dark />
                         <ColorBox bgcolor="primary.100" data={{ label: 'Blue-2', color: '#bae7ff' }} title="primary[100]" dark />
@@ -77,7 +77,7 @@ const ComponentColor = () => (
                 </MainCard>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-                <MainCard title="Secondary Color" codeHighlight>
+                <MainCard title="Secondary Color">
                     <Stack>
                         <ColorBox bgcolor="secondary.lighter" data={{ label: 'Grey-1', color: '#fafafa' }} title="secondary.lighter" dark />
                         <ColorBox bgcolor="secondary.100" data={{ label: 'Grey-2', color: '#f5f5f5' }} title="secondary[100]" dark />
@@ -93,7 +93,7 @@ const ComponentColor = () => (
                 </MainCard>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-                <MainCard title="Other Color" codeHighlight>
+                <MainCard title="Other Color">
                     <Stack>
                         <ColorBox bgcolor="secondary.A100" data={{ label: 'Grey-A1', color: '#ffffff' }} title="secondary.A100" dark />
                         <ColorBox bgcolor="secondary.A200" data={{ label: 'Grey-A2', color: '#434343' }} title="secondary.A200" />
@@ -102,7 +102,7 @@ const ComponentColor = () => (
                 </MainCard>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-                <MainCard title="Success Color" codeHighlight>
+                <MainCard title="Success Color">
                     <Stack>
                         <ColorBox bgcolor="success.lighter" data={{ label: 'Green-1', color: '#f6ffed' }} title="success.lighter" dark />
                         <ColorBox bgcolor="success.light" data={{ label: 'Green-4', color: '#95de64' }} title="success.light" dark />
@@ -113,7 +113,7 @@ const ComponentColor = () => (
                 </MainCard>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-                <MainCard title="Error Color" codeHighlight>
+                <MainCard title="Error Color">
                     <Stack>
                         <ColorBox bgcolor="error.lighter" data={{ label: 'Red-1', color: '#fff1f0' }} title="error.lighter" dark />
                         <ColorBox bgcolor="error.light" data={{ label: 'Red-4', color: '#ff7875' }} title="error.light" dark />
@@ -124,7 +124,7 @@ const ComponentColor = () => (
                 </MainCard>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-                <MainCard title="Warning Color" codeHighlight>
+                <MainCard title="Warning Color">
                     <Stack>
                         <ColorBox bgcolor="warning.lighter" data={{ label: 'Gold-1', color: '#fffbe6' }} title="warning.lighter" dark />
                         <ColorBox bgcolor="warning.light" data={{ label: 'Gold-4', color: '#ffd666' }} title="warning.light" dark />

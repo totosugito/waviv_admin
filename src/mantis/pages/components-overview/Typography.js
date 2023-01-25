@@ -12,7 +12,7 @@ const ComponentTypography = () => (
         <Grid container spacing={3}>
             <Grid item xs={12} lg={6}>
                 <Stack spacing={3}>
-                    <MainCard title="Basic" codeHighlight>
+                    <MainCard title="Basic">
                         <Stack spacing={0.75} sx={{ mt: -1.5 }}>
                             <Typography variant="h1">Inter</Typography>
                             <Typography variant="h5">Font Family</Typography>
@@ -23,7 +23,7 @@ const ComponentTypography = () => (
                             </Breadcrumbs>
                         </Stack>
                     </MainCard>
-                    <MainCard title="Heading" codeHighlight>
+                    <MainCard title="Heading">
                         <Stack spacing={2}>
                             <Typography variant="h1">H1 Heading</Typography>
                             <Breadcrumbs aria-label="breadcrumb">
@@ -73,7 +73,7 @@ const ComponentTypography = () => (
                             </Breadcrumbs>
                         </Stack>
                     </MainCard>
-                    <MainCard title="Body 1" codeHighlight>
+                    <MainCard title="Body 1">
                         <>
                             <Typography variant="body1" gutterBottom>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -86,7 +86,7 @@ const ComponentTypography = () => (
                             </Breadcrumbs>
                         </>
                     </MainCard>
-                    <MainCard title="Body 2" codeHighlight>
+                    <MainCard title="Body 2">
                         <>
                             <Typography variant="body2" gutterBottom>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -99,7 +99,7 @@ const ComponentTypography = () => (
                             </Breadcrumbs>
                         </>
                     </MainCard>
-                    <MainCard title="Subtitle 1" codeHighlight>
+                    <MainCard title="Subtitle 1">
                         <>
                             <Typography variant="subtitle1" gutterBottom>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -112,7 +112,7 @@ const ComponentTypography = () => (
                             </Breadcrumbs>
                         </>
                     </MainCard>
-                    <MainCard title="Subtitle 2" codeHighlight>
+                    <MainCard title="Subtitle 2">
                         <>
                             <Typography variant="subtitle2" gutterBottom>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -125,7 +125,7 @@ const ComponentTypography = () => (
                             </Breadcrumbs>
                         </>
                     </MainCard>
-                    <MainCard title="Caption" codeHighlight>
+                    <MainCard title="Caption">
                         <Stack spacing={1}>
                             <Typography variant="caption">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -142,7 +142,7 @@ const ComponentTypography = () => (
             </Grid>
             <Grid item xs={12} lg={6}>
                 <Stack spacing={3}>
-                    <MainCard title="Alignment" codeHighlight>
+                    <MainCard title="Alignment">
                         <>
                             <Typography variant="body2" gutterBottom>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -158,7 +158,7 @@ const ComponentTypography = () => (
                             </Typography>
                         </>
                     </MainCard>
-                    <MainCard title="Gutter Bottom" codeHighlight>
+                    <MainCard title="Gutter Bottom">
                         <>
                             <Typography variant="body1" gutterBottom>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -175,7 +175,7 @@ const ComponentTypography = () => (
                             </Breadcrumbs>
                         </>
                     </MainCard>
-                    <MainCard title="Overline" codeHighlight>
+                    <MainCard title="Overline">
                         <Stack spacing={1.5}>
                             <Typography variant="overline">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -188,7 +188,7 @@ const ComponentTypography = () => (
                             </Breadcrumbs>
                         </Stack>
                     </MainCard>
-                    <MainCard title="Link" codeHighlight>
+                    <MainCard title="Link">
                         <Stack spacing={1.5}>
                             <Link href="#">www.mantis.com</Link>
                             <Breadcrumbs aria-label="breadcrumb">
@@ -198,7 +198,7 @@ const ComponentTypography = () => (
                             </Breadcrumbs>
                         </Stack>
                     </MainCard>
-                    <MainCard title="Colors" codeHighlight>
+                    <MainCard title="Colors">
                         <>
                             <Typography variant="h6" color="textPrimary" gutterBottom>
                                 This is textPrimary text color.
@@ -223,7 +223,7 @@ const ComponentTypography = () => (
                             </Typography>
                         </>
                     </MainCard>
-                    <MainCard title="Paragraph" codeHighlight>
+                    <MainCard title="Paragraph">
                         <>
                             <Typography variant="body1" gutterBottom>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -237,7 +237,7 @@ const ComponentTypography = () => (
                             </Breadcrumbs>
                         </>
                     </MainCard>
-                    <MainCard title="Font Style" codeHighlight>
+                    <MainCard title="Font Style">
                         <>
                             <Typography variant="body1" gutterBottom sx={{ fontStyle: 'italic' }}>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et

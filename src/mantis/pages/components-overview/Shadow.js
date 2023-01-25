@@ -55,7 +55,7 @@ const ComponentShadow = () => {
         <ComponentSkeleton>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <MainCard title="Basic Shadow" codeHighlight>
+                    <MainCard title="Basic Shadow">
                         <Grid container spacing={3}>
                             <Grid item xs={6} sm={4} md={3} lg={2}>
                                 <ShadowBox shadow="0" />
@@ -136,7 +136,7 @@ const ComponentShadow = () => {
                     </MainCard>
                 </Grid>
                 <Grid item xs={12}>
-                    <MainCard title="Custom Shadow" codeHighlight>
+                    <MainCard title="Custom Shadow">
                         <Grid container spacing={3}>
                             <Grid item xs={6} sm={4} md={3} lg={2}>
                                 <CustomShadowBox shadow={theme.customShadows.z1} label="z1" color="inherit" />

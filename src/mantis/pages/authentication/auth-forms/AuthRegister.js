@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {Link as RouterLink} from 'react-router-dom';
 
 // material-ui
 import {
@@ -20,15 +20,14 @@ import {
 
 // third party
 import * as Yup from 'yup';
-import { Formik } from 'formik';
+import {Formik} from 'formik';
 
 // project import
 import FirebaseSocial from './FirebaseSocial';
-import AnimateButton from 'mantis/components/@extended/AnimateButton';
-import { strengthColor, strengthIndicator } from 'mantis/utils/password-strength';
+import {strengthColor, strengthIndicator} from 'mantis/utils/password-strength';
 
 // assets
-import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import {EyeOutlined, EyeInvisibleOutlined} from '@ant-design/icons';
 
 // ============================|| FIREBASE - REGISTER ||============================ //
 
@@ -69,19 +68,19 @@ const AuthRegister = () => {
                     email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
                     password: Yup.string().max(255).required('Password is required')
                 })}
-                onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+                onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
                     try {
-                        setStatus({ success: false });
+                        setStatus({success: false});
                         setSubmitting(false);
                     } catch (err) {
                         console.error(err);
-                        setStatus({ success: false });
-                        setErrors({ submit: err.message });
+                        setStatus({success: false});
+                        setErrors({submit: err.message});
                         setSubmitting(false);
                     }
                 }}
             >
-                {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
+                {({errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values}) => (
                     <form noValidate onSubmit={handleSubmit}>
                         <Grid container spacing={3}>
                             <Grid item xs={12} md={6}>
@@ -194,7 +193,7 @@ const AuthRegister = () => {
                                                     edge="end"
                                                     size="large"
                                                 >
-                                                    {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                                                    {showPassword ? <EyeOutlined/> : <EyeInvisibleOutlined/>}
                                                 </IconButton>
                                             </InputAdornment>
                                         }
@@ -207,10 +206,15 @@ const AuthRegister = () => {
                                         </FormHelperText>
                                     )}
                                 </Stack>
-                                <FormControl fullWidth sx={{ mt: 2 }}>
+                                <FormControl fullWidth sx={{mt: 2}}>
                                     <Grid container spacing={2} alignItems="center">
                                         <Grid item>
-                                            <Box sx={{ bgcolor: level?.color, width: 85, height: 8, borderRadius: '7px' }} />
+                                            <Box sx={{
+                                                bgcolor: level?.color,
+                                                width: 85,
+                                                height: 8,
+                                                borderRadius: '7px'
+                                            }}/>
                                         </Grid>
                                         <Grid item>
                                             <Typography variant="subtitle1" fontSize="0.75rem">
@@ -238,19 +242,17 @@ const AuthRegister = () => {
                                 </Grid>
                             )}
                             <Grid item xs={12}>
-                                <AnimateButton>
-                                    <Button
-                                        disableElevation
-                                        disabled={isSubmitting}
-                                        fullWidth
-                                        size="large"
-                                        type="submit"
-                                        variant="contained"
-                                        color="primary"
-                                    >
-                                        Create Account
-                                    </Button>
-                                </AnimateButton>
+                                <Button
+                                    disableElevation
+                                    disabled={isSubmitting}
+                                    fullWidth
+                                    size="large"
+                                    type="submit"
+                                    variant="contained"
+                                    color="primary"
+                                >
+                                    Create Account
+                                </Button>
                             </Grid>
                             <Grid item xs={12}>
                                 <Divider>
@@ -258,7 +260,7 @@ const AuthRegister = () => {
                                 </Divider>
                             </Grid>
                             <Grid item xs={12}>
-                                <FirebaseSocial />
+                                <FirebaseSocial/>
                             </Grid>
                         </Grid>
                     </form>
