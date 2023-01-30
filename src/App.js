@@ -1,7 +1,7 @@
 // project import
-import Routes from 'mantis/routes';
-import ThemeCustomization from 'mantis/themes';
-import ScrollTop from 'mantis/components/ScrollTop';
+import Routes from 'routes';
+import ThemeCustomization from './base/themes';
+import ScrollTop from './base/components/ScrollTop';
 
 // ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
 
