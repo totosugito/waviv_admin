@@ -1,6 +1,7 @@
 // assets
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
+import {getRouterUrl} from "../../../routes/routes";
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
 
@@ -10,18 +11,18 @@ const AuthenticationMenu = {
     type: 'group',
     children: [
         {
-            id: 'login1',
+            id: 'login',
             title: 'Login',
             type: 'item',
-            url: '/login',
+            url: getRouterUrl(true,"login"),
             icon: LockOpenIcon,
             target: true
         },
         {
-            id: 'register1',
+            id: 'register',
             title: 'Register',
             type: 'item',
-            url: '/register',
+            url: getRouterUrl(true,"register"),
             icon: HowToRegIcon,
             target: true
         }

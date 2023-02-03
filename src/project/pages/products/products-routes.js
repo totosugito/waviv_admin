@@ -5,7 +5,7 @@ import Loadable from 'base/components/Loadable';
 import MainLayout from "../../../base/main-layout";
 
 // render - login
-const ProductList = Loadable(lazy(() => import('./pages/ProductList')));
+const ProductList = Loadable(lazy(() => import('./pages/product-list')));
 
 // ==============================|| AUTH ROUTING ||============================== //
 

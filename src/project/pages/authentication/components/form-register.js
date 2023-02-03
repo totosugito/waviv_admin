@@ -23,7 +23,7 @@ import * as Yup from 'yup';
 import {Formik} from 'formik';
 
 // project import
-import FirebaseSocial from './FirebaseSocial';
+import SocialAccount from './social-account';
 import {strengthColor, strengthIndicator} from 'libs/utils/password-strength';
 
 // assets
@@ -31,7 +31,7 @@ import {EyeOutlined, EyeInvisibleOutlined} from '@ant-design/icons';
 
 // ============================|| FIREBASE - REGISTER ||============================ //
 
-const AuthRegister = () => {
+const FormRegister = () => {
     const [level, setLevel] = useState();
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => {
@@ -260,7 +260,7 @@ const AuthRegister = () => {
                                 </Divider>
                             </Grid>
                             <Grid item xs={12}>
-                                <FirebaseSocial/>
+                                <SocialAccount/>
                             </Grid>
                         </Grid>
                     </form>
@@ -270,4 +270,4 @@ const AuthRegister = () => {
     );
 };
 
-export default AuthRegister;
+export default FormRegister;

@@ -1,5 +1,5 @@
 // project import
-import Routes from 'routes';
+import Routes from 'routes/theme-routes';
 import ThemeCustomization from './base/themes';
 import ScrollTop from './base/components/ScrollTop';
 

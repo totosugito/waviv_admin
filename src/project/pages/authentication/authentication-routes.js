@@ -1,27 +1,27 @@
-import { lazy } from 'react';
+import {lazy} from 'react';
 
 // project import
 import Loadable from 'base/components/Loadable';
 import MinimalLayout from 'base/main-layout/MinimalLayout';
+import {getRouterUrl} from "../../../routes/routes";
 
-// render - login
-const AuthLogin = Loadable(lazy(() => import('project/pages/authentication/Login')));
-const AuthRegister = Loadable(lazy(() => import('project/pages/authentication/Register')));
+const RegisterPage = Loadable(lazy(() => import('project/pages/authentication/pages/register-page')));
+const LoginPage = Loadable(lazy(() => import('project/pages/authentication/pages/login-page')));
 
 // ==============================|| AUTH ROUTING ||============================== //
 
 const AuthenticationRoutes = {
     path: '/',
-    element: <MinimalLayout />,
+    element: <MinimalLayout/>,
     children: [
         {
-            path: 'login',
-            element: <AuthLogin />
+            path: getRouterUrl(false, "register"),
+            element: <RegisterPage/>
         },
         {
-            path: 'register',
-            element: <AuthRegister />
-        }
+            path: getRouterUrl(false, "login"),
+            element: <LoginPage/>
+        },
     ]
 };
 

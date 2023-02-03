@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { Grid, Stack, Typography } from '@mui/material';
 
 // project import
-import FirebaseRegister from './auth-forms/AuthRegister';
-import AuthWrapper from './AuthWrapper';
+import FirebaseRegister from '../components/form-register';
+import AuthWrapper from '../components/auth-wrapper';
 
 // ================================|| REGISTER ||================================ //
 
-const Register = () => (
+const RegisterPage = () => (
     <AuthWrapper>
         <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -27,4 +27,4 @@ const Register = () => (
     </AuthWrapper>
 );
 
-export default Register;
+export default RegisterPage;
