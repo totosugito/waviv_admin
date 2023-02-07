@@ -1,5 +1,4 @@
-// types
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 // initial state
 const initialState = {
@@ -11,7 +10,7 @@ const initialState = {
 
 // ==============================|| SLICE - MENU ||============================== //
 
-const menu = createSlice({
+const menuSlice = createSlice({
     name: 'menu',
     initialState,
     reducers: {
@@ -33,6 +32,7 @@ const menu = createSlice({
     }
 });
 
-export default menu.reducer;
+const {reducer, actions} = menuSlice;
+export const {activeItem, activeComponent, openDrawer, openComponentDrawer} = actions;
+export default reducer;
 
-export const { activeItem, activeComponent, openDrawer, openComponentDrawer } = menu.actions;

@@ -13,7 +13,7 @@ import navigation from 'project/pages/pages-menu';
 import Breadcrumbs from 'base/components/@extended/Breadcrumbs';
 
 // types
-import { openDrawer } from 'store/reducers/menu';
+import { openDrawer } from 'store/slices/menu-slice';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 

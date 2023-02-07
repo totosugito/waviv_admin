@@ -1,7 +1,5 @@
 import {useEffect, useState} from 'react';
 import {Link as RouterLink} from 'react-router-dom';
-
-// material-ui
 import {
     Box,
     Button,
@@ -22,17 +20,13 @@ import {
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 
-// project import
-import SocialAccount from './social-account';
 import {strengthColor, strengthIndicator} from 'libs/utils/password-strength';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-// assets
-import {EyeOutlined, EyeInvisibleOutlined} from '@ant-design/icons';
-
-// ============================|| FIREBASE - REGISTER ||============================ //
 
 const FormRegister = () => {
-    const [level, setLevel] = useState();
+    const [level, setLevel] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -193,7 +187,7 @@ const FormRegister = () => {
                                                     edge="end"
                                                     size="large"
                                                 >
-                                                    {showPassword ? <EyeOutlined/> : <EyeInvisibleOutlined/>}
+                                                    {showPassword ? <VisibilityIcon/> : <VisibilityOffIcon/>}
                                                 </IconButton>
                                             </InputAdornment>
                                         }
@@ -258,9 +252,6 @@ const FormRegister = () => {
                                 <Divider>
                                     <Typography variant="caption">Sign up with</Typography>
                                 </Divider>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <SocialAccount/>
                             </Grid>
                         </Grid>
                     </form>

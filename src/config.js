@@ -21,3 +21,4 @@ export const linkedInColor = '#0e76a8';
 import imageLogo from 'assets/images/logo/waviv-light.png'
 export const webLogo = imageLogo
 export const webVersion = "v1.1.0"
+export const showDebug = true;

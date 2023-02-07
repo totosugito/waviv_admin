@@ -11,21 +11,21 @@ const AuthenticationMenu = {
     type: 'group',
     children: [
         {
-            id: 'login',
-            title: 'Login',
-            type: 'item',
-            url: getRouterUrl(true,"login"),
-            icon: LockOpenIcon,
-            target: true
-        },
-        {
             id: 'register',
             title: 'Register',
             type: 'item',
-            url: getRouterUrl(true,"register"),
+            url: getRouterUrl("register"),
             icon: HowToRegIcon,
             target: true
-        }
+        },
+        {
+            id: 'login',
+            title: 'Login',
+            type: 'item',
+            url: getRouterUrl("login"),
+            icon: LockOpenIcon,
+            target: true
+        },
     ]
 };
 

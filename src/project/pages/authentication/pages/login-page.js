@@ -1,11 +1,9 @@
 import {Link} from 'react-router-dom';
-
-// material-ui
 import {Grid, Stack, Typography} from '@mui/material';
 
-// project import
 import FormLogin from '../components/form-login';
 import AuthWrapper from '../components/auth-wrapper';
+import {getRouterUrl} from "../../../../routes/routes";
 
 // ================================|| LOGIN ||================================ //
 
@@ -24,7 +22,7 @@ const LoginPage = () => (
             <Grid item xs={12}>
                 <Typography variant="body1" sx={{textDecoration: 'none'}}>Need an account?&nbsp;
                     <Typography component={Link}
-                                to="/register"
+                                to={getRouterUrl("register")}
                                 color="primary">
                         SIGN UP
                     </Typography>

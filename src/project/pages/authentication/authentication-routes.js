@@ -15,11 +15,11 @@ const AuthenticationRoutes = {
     element: <MinimalLayout/>,
     children: [
         {
-            path: getRouterUrl(false, "register"),
+            path: getRouterUrl("register"),
             element: <RegisterPage/>
         },
         {
-            path: getRouterUrl(false, "login"),
+            path: getRouterUrl("login"),
             element: <LoginPage/>
         },
     ]

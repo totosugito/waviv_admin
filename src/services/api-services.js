@@ -1,86 +1,65 @@
 import axios from "axios";
 import {getRouterUrl} from "../routes/routes";
+import {showLog} from "../libs/debug/log-message";
 
-export const logout = () => (dispatch) => {
-    // localStorage.removeItem('userInfo')
-    // localStorage.removeItem('cartItems')
-    // localStorage.removeItem('shippingAddress')
-    // localStorage.removeItem('paymentMethod')
+const API_URL = "https://dummyjson.com"
+const KEY_USER = "user"
+const httpHeaderConfig = {
+    headers: {
+        'Content-Type': 'application/json',
+    },
+}
+
+export const userRegister = (url, param, key) => async (dispatch) => {
+    try {
+        dispatch({
+            type: key.request,
+        })
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
+
+        const {data} = await axios.post(
+            url,
+            param,
+            config
+        )
+
+        dispatch({
+            type: key.success,
+            payload: data,
+        })
+    } catch (error) {
+        dispatch({
+            type: key.fail,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        })
+    }
+}
+
+const login = (url, param) => {
+    showLog("login", {url: url, param: param})
+    return axios
+        .post(API_URL + url, param, httpHeaderConfig)
+        .then((response) => {
+            // if (response.data.accessToken) {
+            localStorage.setItem(KEY_USER, JSON.stringify(response.data));
+            // }
+
+            return response.data;
+        });
+};
+
+const logout = () => {
+    localStorage.removeItem(KEY_USER);
     // dispatch({ type: USER_LOGOUT })
-    // dispatch({ type: USER_DETAILS_RESET })
-    // dispatch({ type: ORDER_LIST_MY_RESET })
-    // dispatch({ type: USER_LIST_RESET })
-    document.location.href = getRouterUrl(true, 'login')
-}
-
-export const httpRegister = (url, param, key) => async (dispatch) => {
-    try {
-        dispatch({
-            type: key.request,
-        })
-
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-
-        const {data} = await axios.post(
-            url,
-            param,
-            config
-        )
-
-        dispatch({
-            type: key.success,
-            payload: data,
-        })
-    } catch (error) {
-        dispatch({
-            type: key.fail,
-            payload:
-                error.response && error.response.data.message
-                    ? error.response.data.message
-                    : error.message,
-        })
-    }
-}
-
-export const httpLogin = (url, param, key) => async (dispatch) => {
-    try {
-        dispatch({
-            type: key.request,
-        })
-
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-
-        const {data} = await axios.post(
-            url,
-            param,
-            config
-        )
-
-        dispatch({
-            type: key.success,
-            payload: data,
-        })
-
-        // TODO: save user info data
-        localStorage.setItem('userInfo', JSON.stringify(data))
-    } catch (error) {
-        dispatch({
-            type: key.fail,
-            payload:
-                error.response && error.response.data.message
-                    ? error.response.data.message
-                    : error.message,
-        })
-    }
-}
+};
 
 export const httpGet = (url, param, key) => async (dispatch, getState) => {
     try {
@@ -155,3 +134,9 @@ export const httpPost = (url, param, key) => async (dispatch, getState) => {
         })
     }
 }
+
+const ApiService = {
+    login, logout
+};
+
+export default ApiService;

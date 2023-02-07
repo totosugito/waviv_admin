@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 
-// material-ui
 import {Box} from '@mui/material';
-
-// project import
 import MainCard from 'base/components/MainCard';
 import {useTheme} from "@mui/material/styles";
 
