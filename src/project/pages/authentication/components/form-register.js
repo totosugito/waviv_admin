@@ -248,11 +248,11 @@ const FormRegister = () => {
                                     Create Account
                                 </Button>
                             </Grid>
-                            <Grid item xs={12}>
-                                <Divider>
-                                    <Typography variant="caption">Sign up with</Typography>
-                                </Divider>
-                            </Grid>
+                            {/*<Grid item xs={12}>*/}
+                            {/*    <Divider>*/}
+                            {/*        <Typography variant="caption">Sign up with</Typography>*/}
+                            {/*    </Divider>*/}
+                            {/*</Grid>*/}
                         </Grid>
                     </form>
                 )}

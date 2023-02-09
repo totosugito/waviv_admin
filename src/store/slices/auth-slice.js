@@ -7,7 +7,7 @@ const initialState = user
     ? {isLoggedIn: true, user}
     : {isLoggedIn: false, user: null};
 
-const authSlice = createSlice({
+const AuthSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
@@ -32,5 +32,5 @@ const authSlice = createSlice({
     },
 });
 
-const {reducer} = authSlice;
+const {reducer} = AuthSlice;
 export default reducer;
