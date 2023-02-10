@@ -1,8 +1,11 @@
 import axios from "axios";
 import {getRouterUrl} from "../routes/routes";
 import {showLog} from "../libs/debug/log-message";
+import {clearMessage} from "../store/slices/message-slice";
+import {dispatch} from "../store";
 
-const API_URL = "https://dummyjson.com"
+// const API_URL = "https://dummyjson.com"
+const API_URL = "http://117.54.250.85:5152"
 const KEY_USER = "user"
 const httpHeaderConfig = {
     headers: {
@@ -58,6 +61,7 @@ const login = (url, param) => {
 
 const logout = () => {
     localStorage.removeItem(KEY_USER);
+    // dispatch(clearMessage());
     // dispatch({ type: USER_LOGOUT })
 };
 

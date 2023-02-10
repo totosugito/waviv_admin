@@ -29,6 +29,10 @@ const AuthSlice = createSlice({
             state.isLoggedIn = false;
             state.user = null;
         },
+        [httpLogout.rejected]: (state, action) => {
+            state.isLoggedIn = false;
+            state.user = null;
+        },
     },
 });
 

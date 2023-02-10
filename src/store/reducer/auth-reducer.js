@@ -1,17 +1,35 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import ApiService from "../../services/api-services";
-import {setMessage} from "../slices/message-slice";
+import axios from "axios";
+import {createMessageError} from "../../libs/utils/my_message";
 
+const API_URL = "https://dummyjson.com"
+const KEY_USER = "user"
+const httpHeaderConfig = {
+    headers: {
+        'Content-Type': 'application/json',
+    },
+}
 export const httpLogin = createAsyncThunk(
-    "",
+    "auth/login",
     async (arg, thunkAPI) => {
         try {
-            const data = await ApiService.login(arg.url, arg.param);
-            return { user: data };
-        } catch (error) {
-            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-            thunkAPI.dispatch(setMessage(message));
-            return thunkAPI.rejectWithValue();
+            await axios
+                .post(API_URL + arg.url, arg.param, httpHeaderConfig)
+                .then((response) => {
+                    // TODO : check success identified
+                    let isSuccess = true;
+                    if(isSuccess) {
+                        localStorage.setItem(KEY_USER, JSON.stringify(response.data));
+                        return { user: response.data };
+                    }
+                    else {
+                        return thunkAPI.rejectWithValue(createMessageError(response.data.error));
+                    }
+                })
+        } catch (err) {
+            const message = (err.response && err.response.data && err.response.data.message) || err.message || err.toString();
+            return thunkAPI.rejectWithValue(createMessageError(message));
         }
     }
 );
