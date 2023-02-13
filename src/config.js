@@ -22,3 +22,5 @@ import imageLogo from 'assets/images/logo/waviv-light.png'
 export const webLogo = imageLogo
 export const webVersion = "v1.1.0"
 export const showDebug = true;
+export const API_URL_RELEASE = ""
+export const API_URL_DEVEL = "https://dummyjson.com"

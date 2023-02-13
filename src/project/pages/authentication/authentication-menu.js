@@ -1,7 +1,7 @@
 // assets
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
-import {getRouterUrl} from "../../../routes/routes";
+import {getRouterUrl} from "../../../routes/router-url";
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
 

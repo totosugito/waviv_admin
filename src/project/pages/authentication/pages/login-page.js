@@ -2,40 +2,35 @@ import {Link, useNavigate} from 'react-router-dom';
 import {Alert, Box, Grid, Stack, Typography} from '@mui/material';
 
 import FormLogin from '../components/form-login';
-import {getRouterUrl} from "../../../../routes/routes";
+import {getRouterUrl} from "../../../../routes/router-url";
 import {style_auth} from '../styles/auth-style'
 import MainCard from "../../../../base/components/MainCard";
 import React, {useEffect} from 'react';
 import {dispatch} from "../../../../store";
-import {httpLogin, httpLogout} from "../../../../store/reducer/auth-reducer";
-import {getApiUrl} from "../../../../services/apis";
+import AuthService from "../../../../services/auth-service";
+import {getRouterApi} from "../../../../routes/router-api";
+import {useSelector} from "react-redux";
 
 const LoginPage = () => {
     let navigate = useNavigate();
-    const [loading, setLoading] = React.useState(false);
-    const [pageStatus, setPageStatus] = React.useState({error: false, msg: ""});
+    const auth = useSelector((state) => state.auth)
+    useEffect(() => {
+            dispatch(AuthService.httpUserLogout());
+        }, []
+    )
 
     useEffect(() => {
-            dispatch(httpLogout());
-        },        []
+            if (auth.isLoggedIn) {
+                navigate(getRouterUrl("dashboard"));
+            }
+        }, [auth.isLoggedIn]
     )
 
     const onSubmitClicked = (data) => {
-        let arg = {url: getApiUrl("login"), param: data}
-        dispatch(httpLogin(arg))
-            .unwrap()
-            .then((e) => {
-                navigate(getRouterUrl("register"));
-                // window.location.reload();
-                setPageStatus({error: false, msg: ""});
-                setLoading(false);
-            })
-            .catch((e) => {
-                setPageStatus({...pageStatus, error: e.id<0, msg: e.msg})
-                setLoading(false);
-            });
+        dispatch(AuthService.httpUserLogin(getRouterApi("login"), data));
     }
     return (
+        // {auth.isLoading && }
         <Box sx={style_auth.box}>
             <Grid sx={style_auth.grid}>
                 <Grid container sx={style_auth.grid_content}>
@@ -53,8 +48,8 @@ const LoginPage = () => {
                                 </Stack>
                             </Grid>
                             <Grid item xs={12}>
-                                {pageStatus.error && (
-                                <Alert severity="error" sx={{mb: 2}}>{pageStatus.msg}</Alert>
+                                {auth.isError && (
+                                    <Alert severity="error" sx={{mb: 2}}>{auth.message}</Alert>
                                 )}
                                 <FormLogin onSubmitClicked={onSubmitClicked}/>
                             </Grid>

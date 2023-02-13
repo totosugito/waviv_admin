@@ -1,4 +1,4 @@
-export function getApiUrl(key) {
+export function getRouterApi(key) {
     let apis = {
         "register": "/auth/register",
         "login": "/auth/login",

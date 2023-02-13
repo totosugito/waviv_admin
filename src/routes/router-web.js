@@ -6,8 +6,6 @@ import ProductRoutes from "../project/pages/products/products-routes";
 import AuthenticationRoutes from "../project/pages/authentication/authentication-routes";
 import DashboardRoutes from "../project/pages/dashboard/dashboard-routes";
 
-// ==============================|| ROUTING RENDER ||============================== //
-
-export default function ThemeRoutes() {
+export default function RouterWeb() {
     return useRoutes([DashboardRoutes, AuthenticationRoutes, UsersRoutes, ProductRoutes]);
 }

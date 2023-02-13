@@ -1,40 +1,48 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {httpLogin, httpLogout} from "../reducer/auth-reducer";
 
-const user = JSON.parse(localStorage.getItem("user"));
-
-const initialState = user
-    ? {isLoggedIn: true, user}
-    : {isLoggedIn: false, user: null};
+const initialState = {
+    isLoading: false,
+    isError: false,
+    isLoggedIn: false,
+    user: null,
+    message: ""
+};
 
 const AuthSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        // [register.fulfilled]: (state, action) => {
-        //     state.isLoggedIn = false;
-        // },
-        // [register.rejected]: (state, action) => {
-        //     state.isLoggedIn = false;
-        // },
-        [httpLogin.fulfilled]: (state, action) => {
+        setAuthLoading: (state, action) => {
+            state.isLoading = true;
+            state.isError = false;
+            state.isLoggedIn = false;
+            state.user = null;
+            state.message = ""
+        },
+        setAuthLoginSuccess: (state, action) => {
+            state.isLoading = false;
+            state.isError = false;
             state.isLoggedIn = true;
-            state.user = action.payload.user;
+            state.user = action.payload;
+            state.message = ""
         },
-        [httpLogin.rejected]: (state, action) => {
+        setAuthLoginFailed: (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
             state.isLoggedIn = false;
             state.user = null;
+            state.message = action.payload
         },
-        [httpLogout.fulfilled]: (state, action) => {
+        setAuthLogout: (state, action) => {
+            state.isLoading = false;
+            state.isError = false;
             state.isLoggedIn = false;
             state.user = null;
-        },
-        [httpLogout.rejected]: (state, action) => {
-            state.isLoggedIn = false;
-            state.user = null;
-        },
+            state.message = ""
+        }
     },
 });
 
-const {reducer} = AuthSlice;
+const {reducer, actions} = AuthSlice;
+export const {setAuthLoading, setAuthLoginSuccess, setAuthLoginFailed, setAuthLogout} = actions
 export default reducer;

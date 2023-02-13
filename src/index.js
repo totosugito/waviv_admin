@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import 'simplebar/src/simplebar.css';
 
 // third-party
-import { Provider as ReduxProvider } from 'react-redux';
+import { Provider } from 'react-redux';
 
 // apex-chart
 import 'assets/third-party/apex-chart.css';
@@ -21,13 +21,13 @@ import reportWebVitals from './reportWebVitals';
 const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
-    <StrictMode>
-        <ReduxProvider store={store}>
+    // <StrictMode>
+        <Provider store={store}>
             <BrowserRouter>
                 <App />
             </BrowserRouter>
-        </ReduxProvider>
-    </StrictMode>
+        </Provider>
+    // </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

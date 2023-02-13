@@ -3,7 +3,7 @@ import {lazy} from 'react';
 // project import
 import Loadable from 'base/components/Loadable';
 import MinimalLayout from 'base/main-layout/MinimalLayout';
-import {getRouterUrl} from "../../../routes/routes";
+import {getRouterUrl} from "../../../routes/router-url";
 
 const RegisterPage = Loadable(lazy(() => import('project/pages/authentication/pages/register-page')));
 const LoginPage = Loadable(lazy(() => import('project/pages/authentication/pages/login-page')));
