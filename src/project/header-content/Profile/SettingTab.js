@@ -4,8 +4,11 @@ import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
-// assets
-import { CommentOutlined, LockOutlined, QuestionCircleOutlined, UserOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
+import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
+import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
+import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
+import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
 
 // ==============================|| HEADER PROFILE - SETTING TAB ||============================== //
 
@@ -21,31 +24,31 @@ const SettingTab = () => {
         <List component="nav" sx={{ p: 0, '& .MuiListItemIcon-root': { minWidth: 32, color: theme.palette.grey[500] } }}>
             <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
                 <ListItemIcon>
-                    <QuestionCircleOutlined />
+                    <QuestionAnswerOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText primary="Support" />
             </ListItemButton>
             <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1)}>
                 <ListItemIcon>
-                    <UserOutlined />
+                    <PermIdentityOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText primary="Account Settings" />
             </ListItemButton>
             <ListItemButton selected={selectedIndex === 2} onClick={(event) => handleListItemClick(event, 2)}>
                 <ListItemIcon>
-                    <LockOutlined />
+                    <LockOpenOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText primary="Privacy Center" />
             </ListItemButton>
             <ListItemButton selected={selectedIndex === 3} onClick={(event) => handleListItemClick(event, 3)}>
                 <ListItemIcon>
-                    <CommentOutlined />
+                    <CommentOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText primary="Feedback" />
             </ListItemButton>
             <ListItemButton selected={selectedIndex === 4} onClick={(event) => handleListItemClick(event, 4)}>
                 <ListItemIcon>
-                    <UnorderedListOutlined />
+                    <FormatListBulletedOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText primary="History" />
             </ListItemButton>

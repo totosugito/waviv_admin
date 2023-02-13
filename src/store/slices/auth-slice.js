@@ -19,6 +19,20 @@ const AuthSlice = createSlice({
             state.user = null;
             state.message = ""
         },
+        setAuthRegisterSuccess: (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.isLoggedIn = false;
+            state.user = null;
+            state.message = ""
+        },
+        setAuthRegisterFailed: (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.isLoggedIn = false;
+            state.user = null;
+            state.message = action.payload
+        },
         setAuthLoginSuccess: (state, action) => {
             state.isLoading = false;
             state.isError = false;
@@ -44,5 +58,12 @@ const AuthSlice = createSlice({
 });
 
 const {reducer, actions} = AuthSlice;
-export const {setAuthLoading, setAuthLoginSuccess, setAuthLoginFailed, setAuthLogout} = actions
+export const {
+    setAuthLoading,
+    setAuthRegisterSuccess,
+    setAuthRegisterFailed,
+    setAuthLoginSuccess,
+    setAuthLoginFailed,
+    setAuthLogout
+} = actions
 export default reducer;

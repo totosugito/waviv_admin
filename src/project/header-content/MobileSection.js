@@ -10,7 +10,7 @@ import Profile from './Profile';
 import Transitions from 'base/components/@extended/Transitions';
 
 // assets
-import { MoreOutlined } from '@ant-design/icons';
+import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 
 // ==============================|| HEADER CONTENT - MOBILE ||============================== //
 
@@ -56,7 +56,7 @@ const MobileSection = () => {
                     onClick={handleToggle}
                     color="inherit"
                 >
-                    <MoreOutlined />
+                    <MoreVertOutlinedIcon />
                 </IconButton>
             </Box>
             <Popper

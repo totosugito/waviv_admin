@@ -19,15 +19,18 @@ import {
     Typography
 } from '@mui/material';
 
-// project import
 import MainCard from 'base/components/MainCard';
 import Transitions from 'base/components/@extended/Transitions';
 import ProfileTab from './ProfileTab';
 import SettingTab from './SettingTab';
-
-// assets
-import avatar1 from 'assets/images/users/avatar-1.png';
-import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import {useSelector} from "react-redux";
+import {getRouterUrl} from "../../../routes/router-url";
+import {useNavigate} from "react-router-dom";
+import {dispatch} from "../../../store";
+import AuthService from "../../../services/auth-service";
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -54,10 +57,13 @@ function a11yProps(index) {
 // ==============================|| HEADER CONTENT - PROFILE ||============================== //
 
 const Profile = () => {
+    let navigate = useNavigate();
+    const auth = useSelector((state) => state.auth)
     const theme = useTheme();
 
-    const handleLogout = async () => {
-        // logout
+    const handleLogout = () => {
+        dispatch(AuthService.httpUserLogout());
+        navigate(getRouterUrl("login"));
     };
 
     const anchorRef = useRef(null);
@@ -97,8 +103,8 @@ const Profile = () => {
                 onClick={handleToggle}
             >
                 <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
-                    <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
-                    <Typography variant="subtitle1">John Doe</Typography>
+                    <Avatar alt="profile user" src={auth.user.image} sx={{ width: 32, height: 32 }} />
+                    <Typography variant="subtitle1">{auth.user.firstName}</Typography>
                 </Stack>
             </ButtonBase>
             <Popper
@@ -139,18 +145,18 @@ const Profile = () => {
                                             <Grid container justifyContent="space-between" alignItems="center">
                                                 <Grid item>
                                                     <Stack direction="row" spacing={1.25} alignItems="center">
-                                                        <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
+                                                        <Avatar alt="profile user" src={auth.user.image} sx={{ width: 32, height: 32 }} />
                                                         <Stack>
-                                                            <Typography variant="h6">John Doe</Typography>
+                                                            <Typography variant="h6">{auth.user.firstName} {auth.user.lastName}</Typography>
                                                             <Typography variant="body2" color="textSecondary">
-                                                                UI/UX Designer
+                                                                {auth.user.email}
                                                             </Typography>
                                                         </Stack>
                                                     </Stack>
                                                 </Grid>
                                                 <Grid item>
                                                     <IconButton size="large" color="secondary" onClick={handleLogout}>
-                                                        <LogoutOutlined />
+                                                        <LogoutOutlinedIcon />
                                                     </IconButton>
                                                 </Grid>
                                             </Grid>
@@ -172,7 +178,7 @@ const Profile = () => {
                                                                 alignItems: 'center',
                                                                 textTransform: 'capitalize'
                                                             }}
-                                                            icon={<UserOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
+                                                            icon={<PersonOutlineOutlinedIcon style={{ marginBottom: 0, marginRight: '10px' }} />}
                                                             label="Profile"
                                                             {...a11yProps(0)}
                                                         />
@@ -184,7 +190,7 @@ const Profile = () => {
                                                                 alignItems: 'center',
                                                                 textTransform: 'capitalize'
                                                             }}
-                                                            icon={<SettingOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
+                                                            icon={<SettingsOutlinedIcon style={{ marginBottom: 0, marginRight: '10px' }} />}
                                                             label="Setting"
                                                             {...a11yProps(1)}
                                                         />

@@ -1,7 +1,25 @@
 import axios from "axios";
-import {setAuthLoading, setAuthLoginSuccess, setAuthLoginFailed, setAuthLogout} from "../store/slices/auth-slice";
+import {
+    setAuthLoading,
+    setAuthLoginSuccess,
+    setAuthLoginFailed,
+    setAuthLogout,
+    setAuthRegisterSuccess, setAuthRegisterFailed
+} from "../store/slices/auth-slice";
 import {API_URL_DEVEL} from "../config";
 import {defaultHttpHeaderConfig, PREF_USER} from "./constant";
+
+export const httpUserRegister = (url, param) => async (dispatch) => {
+    try {
+        dispatch(setAuthLoading());
+        await axios.post(API_URL_DEVEL + url, param, defaultHttpHeaderConfig).then((response) => {
+            dispatch(setAuthRegisterSuccess(response.data));
+        })
+    } catch (err) {
+        const message = (err.response && err.response.data && err.response.data.message) || err.message || err.toString();
+        dispatch(setAuthRegisterFailed(message));
+    }
+}
 
 export const httpUserLogin = (url, param) => async (dispatch) => {
     try {

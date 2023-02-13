@@ -3,6 +3,7 @@ import { createTheme } from '@mui/material/styles';
 
 // third-party
 import { presetPalettes } from '@ant-design/colors';
+import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
 
 // project import
 import ThemeOption from './theme';

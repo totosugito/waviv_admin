@@ -1,6 +1,5 @@
 // material-ui
 import { Box, IconButton, Link, useMediaQuery } from '@mui/material';
-import { GithubOutlined } from '@ant-design/icons';
 
 // project import
 import Search from './Search';
@@ -19,8 +18,9 @@ const HeaderContent = () => {
             {matchesXs && <Box sx={{ width: '100%', ml: 1 }} />}
 
             <Notification />
-            {!matchesXs && <Profile />}
-            {matchesXs && <MobileSection />}
+            <Profile />
+            {/*{!matchesXs && <Profile />}*/}
+            {/*{matchesXs && <MobileSection />}*/}
         </>
     );
 };

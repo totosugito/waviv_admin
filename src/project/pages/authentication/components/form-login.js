@@ -34,7 +34,6 @@ const FormLogin = ({onSubmitClicked}) => {
             .max(128)
             .required('Password is required')
             .default('123')
-        ,
     });
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues: formDefaultValue,
@@ -87,7 +86,6 @@ const FormLogin = ({onSubmitClicked}) => {
                             )}
                         </Stack>
                     </Grid>
-
                     <Grid item xs={12}>
                         <Button
                             disableElevation

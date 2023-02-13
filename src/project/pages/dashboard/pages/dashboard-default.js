@@ -28,7 +28,10 @@ import MainCard from 'base/components/MainCard';
 import AnalyticEcommerce from 'base/components/cards/statistics/AnalyticEcommerce';
 
 // assets
-import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import MarkUnreadChatAltIcon from '@mui/icons-material/MarkUnreadChatAlt';
+import SettingsIcon from '@mui/icons-material/Settings';
+
 import avatar1 from 'assets/images/users/avatar-1.png';
 import avatar2 from 'assets/images/users/avatar-2.png';
 import avatar3 from 'assets/images/users/avatar-3.png';
@@ -246,7 +249,7 @@ const DashboardDefault = () => {
                                         bgcolor: 'success.lighter'
                                     }}
                                 >
-                                    <GiftOutlined />
+                                    <CardGiftcardIcon />
                                 </Avatar>
                             </ListItemAvatar>
                             <ListItemText primary={<Typography variant="subtitle1">Order #002434</Typography>} secondary="Today, 2:00 AM" />
@@ -269,7 +272,7 @@ const DashboardDefault = () => {
                                         bgcolor: 'primary.lighter'
                                     }}
                                 >
-                                    <MessageOutlined />
+                                    <MarkUnreadChatAltIcon />
                                 </Avatar>
                             </ListItemAvatar>
                             <ListItemText
@@ -295,7 +298,7 @@ const DashboardDefault = () => {
                                         bgcolor: 'error.lighter'
                                     }}
                                 >
-                                    <SettingOutlined />
+                                    <SettingsIcon />
                                 </Avatar>
                             </ListItemAvatar>
                             <ListItemText primary={<Typography variant="subtitle1">Order #988784</Typography>} secondary="7 hours ago" />

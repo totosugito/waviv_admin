@@ -1,5 +1,5 @@
 import {Link, useNavigate} from 'react-router-dom';
-import {Alert, Box, Grid, Stack, Typography} from '@mui/material';
+import {Alert, Box, Grid, LinearProgress, Stack, Typography} from '@mui/material';
 
 import FormLogin from '../components/form-login';
 import {getRouterUrl} from "../../../../routes/router-url";
@@ -27,48 +27,58 @@ const LoginPage = () => {
     )
 
     const onSubmitClicked = (data) => {
+        if(auth.isLoading) return;
         dispatch(AuthService.httpUserLogin(getRouterApi("login"), data));
     }
     return (
-        // {auth.isLoading && }
-        <Box sx={style_auth.box}>
-            <Grid sx={style_auth.grid}>
-                <Grid container sx={style_auth.grid_content}>
+        <>
+            {auth.isLoading &&
+                <Box sx={{ width: '100%' }}>
+                    <LinearProgress />
+                </Box>
+            }
+            <Box sx={style_auth.box}>
+                <Grid sx={style_auth.grid}>
+                    <Grid container sx={style_auth.grid_content}>
 
-                    <MainCard sx={style_auth.main_card}
-                              content={false}
-                              border={false}
-                              boxShadow>
+                        <MainCard sx={style_auth.main_card}
+                                  content={false}
+                                  border={false}
+                                  boxShadow>
 
-                        <Grid container spacing={3}>
-                            <Grid item xs={12}>
-                                <Stack direction="row" justifyContent="space-between" alignItems="baseline"
-                                       sx={{mb: {xs: -0.5, sm: 0.5}}}>
-                                    <Typography variant="h3">Login</Typography>
-                                </Stack>
-                            </Grid>
-                            <Grid item xs={12}>
-                                {auth.isError && (
-                                    <Alert severity="error" sx={{mb: 2}}>{auth.message}</Alert>
-                                )}
-                                <FormLogin onSubmitClicked={onSubmitClicked}/>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Typography variant="body1" sx={{textDecoration: 'none'}}>Need an
-                                    account?&nbsp;
-                                    <Typography component={Link}
-                                                to={getRouterUrl("register")}
-                                                color="primary">
-                                        SIGN UP
+                            <Grid container spacing={3}>
+                                <Grid item xs={12}>
+                                    <Stack direction="row" justifyContent="space-between" alignItems="baseline"
+                                           sx={{mb: {xs: -0.5, sm: 0.5}}}>
+                                        <Typography variant="h3">Login</Typography>
+                                    </Stack>
+                                </Grid>
+
+
+                                <Grid item xs={12}>
+                                    {auth.isError && (
+                                        <Alert severity="error" sx={{mb: 2}}>{auth.message}</Alert>
+                                    )}
+                                    <FormLogin onSubmitClicked={onSubmitClicked}/>
+                                </Grid>
+
+                                <Grid item xs={12}>
+                                    <Typography variant="body1" sx={{textDecoration: 'none'}}>Need an
+                                        account?&nbsp;
+                                        <Typography component={Link}
+                                                    to={getRouterUrl("register")}
+                                                    color="primary">
+                                            SIGN UP
+                                        </Typography>
                                     </Typography>
-                                </Typography>
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                    </MainCard>
+                        </MainCard>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Box>)
+            </Box>
+        </>)
 }
 
 export default LoginPage;
