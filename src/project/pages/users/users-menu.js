@@ -31,7 +31,7 @@ const UsersMenu = {
         },
         {
             id: 'users-editXX',
-            title: 'Edit UserXXXX',
+            title: 'Edit UserYYYY',
             type: 'item',
             url: '/users-editXX',
             icon: BrandingWatermarkIcon,

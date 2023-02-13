@@ -46,7 +46,6 @@ const NavItem = ({ item, level }) => {
         if (currentIndex > -1) {
             dispatch(activeItem({ openItem: [item.id] }));
         }
-        // eslint-disable-next-line
     }, []);
 
     const textColor = 'text.primary';

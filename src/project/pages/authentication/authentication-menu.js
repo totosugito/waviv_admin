@@ -11,6 +11,30 @@ const AuthenticationMenu = {
     type: 'group',
     children: [
         {
+            id: 'aa',
+            title: 'Authentication',
+            type: 'collapse',
+            icon: HowToRegIcon,
+            children: [
+                {
+                    id: 'bb',
+                    title: 'Login',
+                    type: 'item',
+                    url: '/pages/login/login3',
+                    icon: HowToRegIcon,
+                    target: true
+                },
+                {
+                    id: 'cc',
+                    title: 'Register',
+                    type: 'item',
+                    url: '/pages/register/register3',
+                    icon: HowToRegIcon,
+                    target: true
+                }
+            ]
+        },
+        {
             id: 'register',
             title: 'Register',
             type: 'item',

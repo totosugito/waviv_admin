@@ -1,12 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {PREF_USER} from "../../services/constant";
 
-const initialState = {
-    isLoading: false,
-    isError: false,
-    isLoggedIn: false,
-    user: null,
-    message: ""
-};
+const user = JSON.parse(localStorage.getItem(PREF_USER));
+const initialState = user
+    ? {isLoggedIn: true, user, isLoading: false, isError: false, message: ""}
+    : {isLoggedIn: false, user: null, isLoading: false, isError: false, message: ""};
 
 const AuthSlice = createSlice({
     name: "auth",
