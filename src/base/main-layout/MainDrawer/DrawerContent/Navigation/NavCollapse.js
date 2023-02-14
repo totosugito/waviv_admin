@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -13,6 +13,7 @@ import NavItem from './NavItem';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import ExpandLessOutlinedIcon from '@mui/icons-material/ExpandLessOutlined';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import {useSelector} from "react-redux";
 
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
@@ -20,6 +21,12 @@ const NavCollapse = ({ menu, level }) => {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(null);
+
+    const menu1 = useSelector((state) => state.menu);
+    const { drawerOpen, openItem } = menu1;
+    const textColor = 'text.primary';
+    const iconSelectedColor = 'primary.main';
+    const isSelected = openItem.findIndex((id) => id === menu.id) > -1;
 
     const handleClick = () => {
         setOpen(!open);
@@ -71,7 +78,7 @@ const NavCollapse = ({ menu, level }) => {
 
     const Icon = menu.icon;
     const menuIcon = menu.icon ? (
-        <Icon strokeWidth={1.5} size="1.3rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+        <Icon strokeWidth={1.5} style={{ marginTop: 'auto', marginBottom: 'auto', fontSize: drawerOpen ? '1rem' : '1.25rem' }} />
     ) : (
         <FiberManualRecordIcon
             sx={{
@@ -86,39 +93,67 @@ const NavCollapse = ({ menu, level }) => {
         <>
             <ListItemButton
                 sx={{
-                    // borderRadius: `${customization.borderRadius}px`,
-                    mb: 0.5,
-                    alignItems: 'flex-start',
-                    backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
-                    py: level > 1 ? 1 : 1.25,
-                    pl: `${level * 24}px`
+                    zIndex: 1201,
+                    pl: drawerOpen ? `${level * 28}px` : 1.5,
+                    py: !drawerOpen && level === 1 ? 1.25 : 1,
+                    ...(drawerOpen && {
+                        '&:hover': {
+                            bgcolor: 'primary.lighter'
+                        },
+                        '&.Mui-selected': {
+                            bgcolor: 'primary.lighter',
+                            borderRight: `2px solid ${theme.palette.primary.main}`,
+                            color: iconSelectedColor,
+                            '&:hover': {
+                                color: iconSelectedColor,
+                                bgcolor: 'primary.lighter'
+                            }
+                        }
+                    }),
+                    ...(!drawerOpen && {
+                        '&:hover': {
+                            bgcolor: 'transparent'
+                        },
+                        '&.Mui-selected': {
+                            '&:hover': {
+                                bgcolor: 'transparent'
+                            },
+                            bgcolor: 'transparent'
+                        }
+                    })
                 }}
+
                 selected={selected === menu.id}
                 onClick={handleClick}
             >
-                <ListItemIcon
-                    sx={{
-                        // minWidth: 28,
-                        // color: {
-                        //     borderRadius: 1.5,
-                        //     // width: 36,
-                        //     // height: 36,
-                        //     alignItems: 'center',
-                        //     justifyContent: 'center',
-                        //     '&:hover': {
-                        //         bgcolor: 'secondary.lighter'
-                        //     }
-                        // },
-                        // ...(!drawerOpen &&
-                        //     ...(isSelected && {
-                        //         bgcolor: 'primary.lighter',
-                        //         '&:hover': {
-                        //             bgcolor: 'primary.lighter'
-                        //         }
-                        //     })
-                    }}
-                    sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 32 }}
-                >{menuIcon}</ListItemIcon>
+                {menuIcon && (
+                    <ListItemIcon
+                        sx={{
+                            minWidth: 28,
+                            color: isSelected ? iconSelectedColor : textColor,
+                            ...(!drawerOpen && {
+                                borderRadius: 1.5,
+                                width: 36,
+                                height: 36,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                '&:hover': {
+                                    bgcolor: 'secondary.lighter'
+                                }
+                            }),
+                            ...(!drawerOpen &&
+                                isSelected && {
+                                    bgcolor: 'primary.lighter',
+                                    '&:hover': {
+                                        bgcolor: 'primary.lighter'
+                                    }
+                                })
+                        }}
+                    >
+                        {menuIcon}
+                    </ListItemIcon>
+                )}
+
                 <ListItemText
                     primary={
                         <Typography variant={selected === menu.id ? 'body1' : 'body1'} color="inherit" sx={{ my: 'auto' }}>

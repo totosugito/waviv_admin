@@ -12,7 +12,7 @@ import {
     InputLabel,
     OutlinedInput,
     Stack,
-    Typography
+    Typography, Alert
 } from '@mui/material';
 
 import * as Yup from 'yup';
@@ -27,18 +27,20 @@ import React from 'react';
 const FormRegister = ({onSubmitClicked}) => {
     const [level, setLevel] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const [formDefaultValue, setFormDefaultValue] = React.useState({
-        firstname: '',
-        lastname: '',
+        fullname: '',
         email: '',
         password: '',
+        passwordConfirmation: ''
     });
     const registerSchema = Yup.object().shape({
-        firstname: Yup.string().max(255).required('First Name is required'),
-        lastname: Yup.string().max(255).required('Last Name is required'),
+        fullname: Yup.string().max(255).required('First Name is required'),
         email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-        password: Yup.string().max(255).required('Password is required')
+        password: Yup.string().max(255).required('Password is required'),
+        passwordConfirmation: Yup.string()
+            .oneOf([Yup.ref('password'), null], 'Passwords must match')
     });
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues: formDefaultValue,
@@ -58,34 +60,18 @@ const FormRegister = ({onSubmitClicked}) => {
         <>
             <form noValidate onSubmit={handleSubmit(onSubmitClicked)}>
                 <Grid container spacing={3}>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12}>
                         <Stack spacing={1}>
-                            <InputLabel >First Name*</InputLabel>
+                            <InputLabel >Full Name*</InputLabel>
                             <OutlinedInput
                                 type="text"
-                                placeholder="Enter firstname"
-                                {...register("firstname")}
-                                error={!!errors.firstname}
+                                placeholder="Enter fullname"
+                                {...register("fullname")}
+                                error={!!errors.fullname}
                             />
-                            {errors.firstname && (
+                            {errors.fullname && (
                                 <FormHelperText error>
-                                    {errors.firstname?.message}
-                                </FormHelperText>
-                            )}
-                        </Stack>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                        <Stack spacing={1}>
-                            <InputLabel >Last Name*</InputLabel>
-                            <OutlinedInput
-                                type="text"
-                                placeholder="Enter firstname"
-                                {...register("lastname")}
-                                error={!!errors.lastname}
-                            />
-                            {errors.lastname && (
-                                <FormHelperText error>
-                                    {errors.lastname?.message}
+                                    {errors.fullname?.message}
                                 </FormHelperText>
                             )}
                         </Stack>
@@ -97,7 +83,7 @@ const FormRegister = ({onSubmitClicked}) => {
                                 type="email"
                                 placeholder="Enter email"
                                 {...register("email")}
-                                error={!!errors.lastname}
+                                error={!!errors.email}
                             />
                             {errors.email && (
                                 <FormHelperText error>
@@ -150,7 +136,36 @@ const FormRegister = ({onSubmitClicked}) => {
                                         </Typography>
                                     </Grid>
                                 </Grid>
+                                <Typography variant="body" fontSize="0.75rem">
+                                    Hint: To make password stronger, use upper and lower case letters, numbers, and symbols like ! ? $ % ^ & ).
+                                </Typography>
                             </FormControl>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Stack spacing={1}>
+                            <InputLabel>Confirm Password</InputLabel>
+                            <OutlinedInput
+                                type={showConfirmPassword ? 'text' : 'password'}
+                                placeholder="Confirm password"
+                                {...register("passwordConfirmation")}
+                                error={!!errors.passwordConfirmation}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            onClick={()=> setShowConfirmPassword(!showConfirmPassword)}
+                                            onMouseDown={(event) => event.preventDefault()}
+                                            edge="end"
+                                            size="large">
+                                            {showConfirmPassword ? <VisibilityIcon/> : <VisibilityOffIcon/>}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }/>
+                            {errors.passwordConfirmation && (
+                                <FormHelperText error>
+                                    {errors.passwordConfirmation?.message}
+                                </FormHelperText>
+                            )}
+                        </Stack>
                     </Grid>
                     <Grid item xs={12}>
                         <Typography variant="body2">
