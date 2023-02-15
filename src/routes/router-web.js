@@ -1,11 +1,18 @@
-import { useRoutes } from 'react-router-dom';
+import {useRoutes} from 'react-router-dom';
 
 // project import
-import UsersRoutes from "../project/pages/users/users-routes";
-import ProductRoutes from "../project/pages/products/products-routes";
-import AuthenticationRoutes from "../project/pages/authentication/authentication-routes";
-import DashboardRoutes from "../project/pages/dashboard/dashboard-routes";
+import UsersRoute from "../project/user/users-route";
+import ProductRoute from "../project/product/product-route";
+import AuthenticationRoute from "../project/authentication/authentication-route";
+import DashboardRoute from "../project/dashboard/dashboard-route";
+import SingleRoute from "../project/single/single-route";
 
 export default function RouterWeb() {
-    return useRoutes([DashboardRoutes, AuthenticationRoutes, UsersRoutes, ProductRoutes]);
+    return useRoutes([
+        SingleRoute,
+        AuthenticationRoute,
+        DashboardRoute,
+        UsersRoute,
+        ProductRoute,
+    ]);
 }

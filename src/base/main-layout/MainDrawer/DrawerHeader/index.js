@@ -6,7 +6,7 @@ import { Stack, Chip } from '@mui/material';
 
 // project import
 import DrawerHeaderStyled from './DrawerHeaderStyled';
-import Logo from 'base/components/Logo';
+import LogoSection from 'base/components/logo-section';
 import {webVersion} from "../../../../config";
 
 // ==============================|| DRAWER HEADER ||============================== //
@@ -18,7 +18,7 @@ const DrawerHeader = ({ open }) => {
         // only available in paid version
         <DrawerHeaderStyled theme={theme} open={open}>
             <Stack direction="row" spacing={1} alignItems="center">
-                <Logo />
+                <LogoSection />
                 <Chip
                     label={webVersion}
                     size="small"

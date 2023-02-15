@@ -1,22 +1,21 @@
 // ==============================|| THEME CONFIG  ||============================== //
 
+import {getRouterUrl} from "./routes/router-url";
+
 const config = {
-    defaultPath: '/dashboard/default',
+    // basename: 'front-page',
+    // defaultPath: getRouterUrl("dashboard"),
     fontFamily: `'Public Sans', sans-serif`,
     i18n: 'en',
-    miniDrawer: true,
+    miniDrawer: false,
     container: true,
-    mode: 'light',
+    mode: 'dark',
     presetColor: 'default',
     themeDirection: 'ltr'
 };
 
 export default config;
 export const drawerWidth = 260;
-
-export const twitterColor = '#1DA1F2';
-export const facebookColor = '#3b5998';
-export const linkedInColor = '#0e76a8';
 
 import imageLogo from 'assets/images/logo/waviv-light.png'
 export const webLogo = imageLogo

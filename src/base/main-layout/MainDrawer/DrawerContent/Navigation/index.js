@@ -3,13 +3,13 @@ import { Box, Typography } from '@mui/material';
 
 // project import
 import NavGroup from './NavGroup';
-import menuItem from 'project/pages/pages-menu';
+import UserMenu from 'project/user-menu';
 import NavCollapse from "./NavCollapse";
 
 // ==============================|| DRAWER CONTENT - NAVIGATION ||============================== //
 
 const Navigation = () => {
-    const navGroups = menuItem.items.map((item) => {
+    const navGroups = UserMenu.items.map((item) => {
         switch (item.type) {
             case 'collapse':
                 return <NavCollapse key={item.id} menu={item}/>;

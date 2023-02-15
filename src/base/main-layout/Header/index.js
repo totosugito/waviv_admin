@@ -6,7 +6,7 @@ import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
 
 // project import
 import AppBarStyled from './AppBarStyled';
-import HeaderContent from '../../../project/header-content';
+import HeaderContent from '../../../project/dashboard/header-content/header';
 
 import FormatIndentDecreaseOutlinedIcon from '@mui/icons-material/FormatIndentDecreaseOutlined';
 import FormatIndentIncreaseOutlinedIcon from '@mui/icons-material/FormatIndentIncreaseOutlined';
