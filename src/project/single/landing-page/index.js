@@ -1,9 +1,9 @@
 import {useEffect} from "react";
 import {Box, Button, Container, Typography} from "@mui/material";
-import { Link } from 'react-router-dom';
 import {styled} from "@mui/material/styles";
-import {getRouterUrl} from "../../../routes/router-url";
-import Image404 from "assets/images/images/image_404.svg";
+import Hero from "./component/hero";
+import Section from "./component/section";
+import AboutUs from "./component/about-us";
 
 const LandingPage = () => {
     const StyledContent = styled('div')(({ theme }) => ({
@@ -23,10 +23,14 @@ const LandingPage = () => {
     return (
         <>
             <Container>
-                <StyledContent sx={{ textAlign: 'center', alignItems: 'center' }}>
-                    <Typography variant="h3" paragraph>
-                        Landing page...
-                    </Typography>
+                <Hero/>
+                <Section/>
+                <AboutUs/>
+
+                {/*<StyledContent sx={{ textAlign: 'center', alignItems: 'center' }}>*/}
+                {/*    <Typography variant="h3" paragraph>*/}
+                {/*        Landing page...*/}
+                {/*    </Typography>*/}
 
                     {/*<Typography sx={{ color: 'text.secondary' }}>*/}
                     {/*    Sorry, we could’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be sure to check your*/}
@@ -42,7 +46,7 @@ const LandingPage = () => {
                     {/*<Button to={getRouterUrl("frontpage-user")} size="large" variant="contained" component={Link}>*/}
                     {/*    Go to Home*/}
                     {/*</Button>*/}
-                </StyledContent>
+                {/*</StyledContent>*/}
             </Container>
         </>
     );

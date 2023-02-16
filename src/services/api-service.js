@@ -3,13 +3,13 @@ import axios from "axios";
 export const httpGet = async (url, config = {}) => {
     try {
         let response = await axios.get(url, config)
-        return (response.data);
+        return ({isError: false, data: response.data, message: ""});
     } catch (err) {
         const message =
             err.response && err.response.data.message
                 ? err.response.data.message
                 : err.message;
-        return (message);
+        return ({isError: true, data: {}, message: message});
     }
     //     .then((response) => {
     //     console.log(JSON.stringify(response.data))
