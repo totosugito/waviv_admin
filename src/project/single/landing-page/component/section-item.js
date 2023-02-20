@@ -25,12 +25,12 @@ const SectionItem = (props) => {
     return (
         <Box sx={styles.Box}>
             <Grid container sx={styles.GridContainer}>
-                {props.items.map((item) => (
+                {props.items.map((item, idx) => (
                     <Grid
                         item
                         xs={6}
                         md={3}
-                        key={item.id}
+                        key={idx}
                         sx={styles.GridItem}>
                         {item.icon}
                         <Typography>{item.sentence}</Typography>

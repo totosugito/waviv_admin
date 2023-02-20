@@ -8,9 +8,16 @@ import React from "react";
 import Testimonial from "./component/testimonial";
 import SectionItem from "./component/section-item";
 import ImageInfo from "./component/image-info";
+import LandingHeader from "./component/landing-header";
+import {getRouterUrl} from "../../../routes/router-url";
+import LandingFooter from "./component/landing-footer";
 
 const LandingPage = () => {
-    const carouselItem = [
+    const headerItems = [
+        {variant: "outlined", text: 'Login', route: getRouterUrl("login")},
+        {variant: "contained", text: 'Sign Up', route: getRouterUrl("register")},
+    ];
+    const carouselItems = [
         {
             title: "Expand your career",
             desc: "How learners like you are achieving their goals",
@@ -33,19 +40,16 @@ const LandingPage = () => {
 
     const sectionItems = [
         {
-            id: 1,
             icon: <EngineeringOutlinedIcon sx={{fontSize: 100}} color="primary"/>,
             sentence:
                 'Solving world problems through various web applications using efficient programs and tools',
         },
         {
-            id: 2,
             icon: <AllInclusiveIcon sx={{fontSize: 100}} color="primary"/>,
             sentence:
                 'Through team work, we collaborate and deliver quality projects of high standards',
         },
         {
-            id: 3,
             icon: <PaidOutlinedIcon sx={{fontSize: 100}} color="primary"/>,
             sentence: 'Flexible payment plan is applicable to all our services',
         },
@@ -71,7 +75,6 @@ const LandingPage = () => {
 
     const testimonialItems = [
         {
-            id: 1,
             name: 'Karl Brighton',
             statement:
                 'The team perfectly fit the specialized skill set required. They focused on the most essential features helping us launch the platform eight months faster than planned.',
@@ -80,7 +83,6 @@ const LandingPage = () => {
             position: 'Software Engineer at Kadex',
         },
         {
-            id: 2,
             name: 'Krishna Bells',
             statement:
                 'We needed to automate our entire onboarding process. The team came in and built out the whole journey. Since going live, user retention has gone through the roof!',
@@ -89,7 +91,6 @@ const LandingPage = () => {
             position: 'Product Manager at Google',
         },
         {
-            id: 3,
             name: 'Ben Spiff',
             statement:
                 'Amazing. Our team helped us build an app that delivered a new experience for hiring a physio. The launch was an instant success with 100k downloads in the first month.',
@@ -106,11 +107,13 @@ const LandingPage = () => {
     return (
         <>
             <Container>
-                <TopCarousel items={carouselItem}/>
+                <LandingHeader items={headerItems}/>
+                <TopCarousel items={carouselItems}/>
                 <SectionItem items={sectionItems}/>
                 <ImageInfo item={imageInfoItems[0]}/>
                 <ImageInfo item={imageInfoItems[1]}/>
                 <Testimonial items={testimonialItems}/>
+                <LandingFooter/>
             </Container>
         </>
     );
