@@ -3,7 +3,7 @@ import Loadable from 'base/components/Loadable';
 import MinimalLayout from 'base/main-layout/MinimalLayout';
 import {getRouterUrl} from "../../routes/router-url";
 
-const Page404 = Loadable(lazy(() => import('./page/page_404')));
+const Page404 = Loadable(lazy(() => import('./page-404')));
 const LandingPage = Loadable(lazy(() => import('./landing-page')));
 
 const SingleRoute = {

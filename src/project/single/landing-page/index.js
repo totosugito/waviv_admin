@@ -1,14 +1,13 @@
 import {useEffect} from "react";
-import {Box, Button, Container, Typography} from "@mui/material";
-import {styled} from "@mui/material/styles";
-import Hero from "./component/hero";
-import SectionItem from "./component/section-item";
-import ImageInfo from "./component/image-info";
+import {Container} from "@mui/material";
 import TopCarousel from "./component/top-carousel";
 import EngineeringOutlinedIcon from "@mui/icons-material/EngineeringOutlined";
 import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import React from "react";
+import Testimonial from "./component/testimonial";
+import SectionItem from "./component/section-item";
+import ImageInfo from "./component/image-info";
 
 const LandingPage = () => {
     const carouselItem = [
@@ -69,15 +68,36 @@ const LandingPage = () => {
             leftImagePos: false
         }
     ];
-    const StyledContent = styled('div')(({theme}) => ({
-        maxWidth: 480,
-        margin: 'auto',
-        minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        padding: theme.spacing(12, 0),
-    }));
+
+    const testimonialItems = [
+        {
+            id: 1,
+            name: 'Karl Brighton',
+            statement:
+                'The team perfectly fit the specialized skill set required. They focused on the most essential features helping us launch the platform eight months faster than planned.',
+            image_url:
+                'https://sweta-myteam-website-fm.netlify.app/static/media/avatar-kady.78fc482c.jpg',
+            position: 'Software Engineer at Kadex',
+        },
+        {
+            id: 2,
+            name: 'Krishna Bells',
+            statement:
+                'We needed to automate our entire onboarding process. The team came in and built out the whole journey. Since going live, user retention has gone through the roof!',
+            image_url:
+                'https://sweta-myteam-website-fm.netlify.app/static/media/avatar-aiysha.e119a0c1.jpg',
+            position: 'Product Manager at Google',
+        },
+        {
+            id: 3,
+            name: 'Ben Spiff',
+            statement:
+                'Amazing. Our team helped us build an app that delivered a new experience for hiring a physio. The launch was an instant success with 100k downloads in the first month.',
+            image_url:
+                'https://sweta-myteam-website-fm.netlify.app/static/media/avatar-arthur.098c2e26.jpg',
+            position: 'Founder of Crypto',
+        },
+    ];
 
     useEffect(() => {
         document.title = "Landing page"
@@ -87,31 +107,10 @@ const LandingPage = () => {
         <>
             <Container>
                 <TopCarousel items={carouselItem}/>
-                {/*<Hero/>*/}
                 <SectionItem items={sectionItems}/>
                 <ImageInfo item={imageInfoItems[0]}/>
                 <ImageInfo item={imageInfoItems[1]}/>
-
-                {/*<StyledContent sx={{ textAlign: 'center', alignItems: 'center' }}>*/}
-                {/*    <Typography variant="h3" paragraph>*/}
-                {/*        Landing page...*/}
-                {/*    </Typography>*/}
-
-                {/*<Typography sx={{ color: 'text.secondary' }}>*/}
-                {/*    Sorry, we could’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be sure to check your*/}
-                {/*    spelling.*/}
-                {/*</Typography>*/}
-
-                {/*<Box*/}
-                {/*    component="img"*/}
-                {/*    src={Image404}*/}
-                {/*    sx={{ height: 260, mx: 'auto', my: { xs: 5, sm: 10 } }}*/}
-                {/*/>*/}
-
-                {/*<Button to={getRouterUrl("frontpage-user")} size="large" variant="contained" component={Link}>*/}
-                {/*    Go to Home*/}
-                {/*</Button>*/}
-                {/*</StyledContent>*/}
+                <Testimonial items={testimonialItems}/>
             </Container>
         </>
     );

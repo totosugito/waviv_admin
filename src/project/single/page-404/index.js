@@ -5,7 +5,7 @@ import {styled} from "@mui/material/styles";
 import {getRouterUrl} from "../../../routes/router-url";
 import Image404 from "assets/images/images/image_404.svg";
 
-const Page404 = () => {
+const Index = () => {
     const StyledContent = styled('div')(({ theme }) => ({
         maxWidth: 480,
         margin: 'auto',
@@ -48,4 +48,4 @@ const Page404 = () => {
     );
 }
 
-export default Page404;
+export default Index;
