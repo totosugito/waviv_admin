@@ -33,9 +33,9 @@ export const styles =
             textAlign: 'center',
         },
         heroBox: {
-            width: '98%',
-            display: 'flex',
-            minHeight: '600px',
+            // width: '98%',
+            // display: 'flex',
+            // minHeight: '600px',
             alignItems: 'center',
             justifyContent: 'center',
         },
@@ -66,22 +66,8 @@ export const styles =
             paddingBottom: '30px',
         },
         largeImage: {
-            width: '100%',
-        },
-        sectionGridContainer: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            minHeight: '500px',
-        },
-        sectionGridItem: {
-            backgroundColor: '#f2f0f1',
-            textAlign: 'center',
-            padding: '30px',
-            width: '200px',
-            borderRadius: '10px',
-            margin: '10px !important',
+            maxWidth: '100%',
+            objectFit: "cover",
         },
         inputField: {
             marginBottom: '20px !important',
