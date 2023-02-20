@@ -23,12 +23,15 @@ const LoginPage = () => {
             if (auth.isLoggedIn) {
                 navigate(getRouterUrl("dashboard"));
             }
+            else {
+                navigate(getRouterUrl("login"));
+            }
         }, [auth.isLoggedIn]
     )
 
     const onSubmitClicked = (data) => {
         if (auth.isLoading) return;
-        dispatch(AuthService.httpUserLogin(getRouterApi("login"), data));
+        dispatch(AuthService.httpUserLogin(getRouterApi("login-api"), data));
     }
     return (
         <>

@@ -34,7 +34,7 @@ function CarouselItem(props) {
                         </CardContent>
                     </Card>
                 }
-                <img src={props.item.image} style={styles.Image}/>
+                {props.item.url==="" ? <img src={props.item.image} style={styles.Image}/> : <a href={props.item.url}><img src={props.item.image} style={styles.Image}/></a>}
             </Box>
         </>
     )

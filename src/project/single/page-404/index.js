@@ -39,7 +39,7 @@ const Index = () => {
                         sx={{ height: 260, mx: 'auto', my: { xs: 5, sm: 10 } }}
                     />
 
-                    <Button to={getRouterUrl("frontpage-user")} size="large" variant="contained" component={Link}>
+                    <Button to={getRouterUrl("landing-page")} size="large" variant="contained" component={Link}>
                         Go to Home
                     </Button>
                 </StyledContent>

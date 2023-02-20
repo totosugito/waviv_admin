@@ -11,6 +11,7 @@ import ImageInfo from "./component/image-info";
 import LandingHeader from "./component/landing-header";
 import {getRouterUrl} from "../../../routes/router-url";
 import LandingFooter from "./component/landing-footer";
+import CaroiselItems from "../../../test/component/caroisel-items";
 
 const LandingPage = () => {
     const headerItems = [
@@ -22,7 +23,7 @@ const LandingPage = () => {
             title: "Expand your career",
             desc: "How learners like you are achieving their goals",
             image: "https://img-c.udemycdn.com/notices/web_banner/slide_1_image_udlite/bf1bd00b-e65c-4d18-8b3a-0176cfbb3601.jpg",
-            url: "",
+            url: "https://yahoo.com",
         },
         {
             title: "A broad selection of courses",
@@ -108,6 +109,7 @@ const LandingPage = () => {
         <>
             <Container>
                 <LandingHeader items={headerItems}/>
+                {/*<CaroiselItems/>*/}
                 <TopCarousel items={carouselItems}/>
                 <SectionItem items={sectionItems}/>
                 <ImageInfo item={imageInfoItems[0]}/>

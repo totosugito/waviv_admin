@@ -76,7 +76,7 @@ const ProductList = () => {
         setLoading(true);
         setPageStatus({isError: false, message: ""});
 
-        await httpGet(getRouterApi("product-list"), {}).then((v) => {
+        await httpGet(getRouterApi("product-list-api"), {}).then((v) => {
             if (v.isError) {
                 setPageStatus({isError: v.isError, message: v.message});
                 setData([]);
