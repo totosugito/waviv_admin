@@ -67,8 +67,7 @@ function LandingHeader(props) {
             sx={{width: 250}}
             role="presentation"
             onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
-        >
+            onKeyDown={toggleDrawer(anchor, false)}>
             <List>
                 {props.items.map((item, idx) => (
                     <ListItem button key={idx}>

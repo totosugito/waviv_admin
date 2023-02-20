@@ -113,8 +113,8 @@ const LandingPage = () => {
                 <ImageInfo item={imageInfoItems[0]}/>
                 <ImageInfo item={imageInfoItems[1]}/>
                 <Testimonial items={testimonialItems}/>
-                <LandingFooter/>
             </Container>
+            <LandingFooter/>
         </>
     );
 }

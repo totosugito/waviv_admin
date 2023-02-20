@@ -1,6 +1,7 @@
 import Carousel from 'react-material-ui-carousel'
-import {Box, Card, CardContent, Typography} from "@mui/material";
+import {Box, Card, CardContent, Typography, useMediaQuery} from "@mui/material";
 import parse from 'html-react-parser';
+import {useTheme} from "@mui/material/styles";
 
 function CarouselItem(props) {
     const styles = {
@@ -16,19 +17,23 @@ function CarouselItem(props) {
         }
     }
 
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
     return (
         <>
             <Box sx={{position: "relative"}}>
-                <Card style={styles.Card}>
-                    <CardContent>
-                        <Typography variant="h3" component="div">
-                            {props.item.title}
-                        </Typography>
-                        <Typography component="div">
-                            {parse(props.item.desc)}
-                        </Typography>
-                    </CardContent>
-                </Card>
+                { !matches &&
+                    <Card style={styles.Card}>
+                        <CardContent>
+                            <Typography variant="h3" component="div">
+                                {props.item.title}
+                            </Typography>
+                            <Typography component="div">
+                                {parse(props.item.desc)}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                }
                 <img src={props.item.image} style={styles.Image}/>
             </Box>
         </>
