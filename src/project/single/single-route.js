@@ -7,7 +7,6 @@ const Page404 = Loadable(lazy(() => import('./page-404')));
 const LandingPage = Loadable(lazy(() => import('./landing-page')));
 
 const SingleRoute = {
-    path: '/',
     element: <MinimalLayout/>,
     children: [
         {
@@ -15,19 +14,19 @@ const SingleRoute = {
             element: <Page404/>
         },
         {
-            path: getRouterUrl("404"),
+            path: getRouterUrl("404", ""),
             element: <Page404/>
         },
         {
-            path: getRouterUrl("default"),
+            path: getRouterUrl("default", ""),
             element: <LandingPage />
         },
         {
-            path: getRouterUrl("root"),
+            path: getRouterUrl("root", ""),
             element: <LandingPage />
         },
         {
-            path: getRouterUrl("landing-page"),
+            path: getRouterUrl("landing-page", ""),
             element: <LandingPage/>
         },
     ]

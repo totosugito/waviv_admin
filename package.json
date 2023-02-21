@@ -1,9 +1,7 @@
 {
     "name": "waviv-admin",
     "version": "1.1.1",
-    "private": true,
-    "homepage": "https://test.jasdig.com",
-    "proxy": "https://dummyjson.com",
+    "homepage": ".",
     "dependencies": {
         "@ant-design/colors": "^7.0.0",
         "@emotion/react": "^11.10.4",

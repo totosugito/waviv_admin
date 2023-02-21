@@ -3,7 +3,7 @@
 import {getRouterUrl} from "./routes/router-url";
 
 const config = {
-    // basename: 'front-page',
+    // basename: '.',
     // defaultPath: getRouterUrl("dashboard"),
     fontFamily: `'Public Sans', sans-serif`,
     i18n: 'en',
