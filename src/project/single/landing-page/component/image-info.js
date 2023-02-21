@@ -55,15 +55,15 @@ function ImageInfo(props) {
         <>
             <Box sx={styles.BoxParent}>
                 <Grid container spacing={8} sx={styles.gridContainer}>
-                    {props.item.leftImagePos ?
+                    {props.data.leftImagePos ?
                         <>
-                            <ItemImage item={props.item}/>
-                            <ItemText item={props.item}/>
+                            <ItemImage item={props.data}/>
+                            <ItemText item={props.data}/>
                         </>
                         :
                         <>
-                            <ItemText item={props.item}/>
-                            <ItemImage item={props.item}/>
+                            <ItemText item={props.data}/>
+                            <ItemImage item={props.data}/>
                         </>
                     }
                 </Grid>

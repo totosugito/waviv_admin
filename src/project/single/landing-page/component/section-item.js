@@ -25,7 +25,7 @@ const SectionItem = (props) => {
     return (
         <Box sx={styles.Box}>
             <Grid container sx={styles.GridContainer}>
-                {props.items.map((item, idx) => (
+                {props.data.items.map((item, idx) => (
                     <Grid
                         item
                         xs={6}
