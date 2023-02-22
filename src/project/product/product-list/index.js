@@ -123,9 +123,9 @@ const ProductList = () => {
                 positionToolbarAlertBanner="bottom"
                 initialState={{pagination: { pageSize: 5, pageIndex: 0 }}}
 
-                editingMode="modal" //default
-                enableColumnOrdering
-                enableEditing
+                // editingMode="modal" //default
+                // enableColumnOrdering
+                // enableEditing
                 renderRowActions={({ row, table }) => (
                     <Box sx={{ display: 'flex', gap: '1rem' }}>
                         <Tooltip arrow placement="left" title="Edit">

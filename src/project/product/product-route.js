@@ -7,7 +7,7 @@ import ProtectedRoute from "../../routes/protected-route";
 import {getRouterUrl} from "../../routes/router-url";
 
 // render - login
-const ProductList = Loadable(lazy(() => import('./page/product-list')));
+const ProductList = Loadable(lazy(() => import('./product-list')));
 
 // ==============================|| AUTH ROUTING ||============================== //
 

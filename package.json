@@ -1,7 +1,7 @@
 {
     "name": "waviv-admin",
     "version": "1.1.1",
-    "homepage": ".",
+    "proxy": "https://dummyjson.com",
     "dependencies": {
         "@ant-design/colors": "^7.0.0",
         "@emotion/react": "^11.10.4",
