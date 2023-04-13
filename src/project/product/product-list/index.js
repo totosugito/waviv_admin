@@ -5,9 +5,11 @@ import {Alert, Box, IconButton, LinearProgress, Tooltip} from "@mui/material";
 import React from "react";
 import {getRouterApi} from "../../../routes/router-api";
 import {Delete, Edit} from "@mui/icons-material";
+import ButtonChild from "../../../test/component/button-child";
 
 const ProductList = () => {
     const [data, setData] = useState({});
+    const [dataOri, setDataOri] = useState([]);
     const [loading, setLoading] = useState(false);
     const [pageStatus, setPageStatus] = useState({isError: false, message: ""});
     const columns = useMemo(
@@ -48,29 +50,53 @@ const ProductList = () => {
                     </Box>
                 ),
             },
+            // {
+            //     accessorKey: 'thumbnail',
+            //     header: 'Picture',
+            //     size: 100,
+            //     Cell: ({cell}) => (
+            //         <Box
+            //             sx={{
+            //                 display: 'flex',
+            //                 alignItems: 'center',
+            //                 gap: '1rem',
+            //             }}>
+            //             <img
+            //                 height={50}
+            //                 src={cell.getValue()}
+            //                 loading="lazy"
+            //             />
+            //         </Box>
+            //
+            //     ),
+            // },
             {
-                accessorKey: 'thumbnail',
-                header: 'Picture',
-                size: 100,
-                Cell: ({cell}) => (
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '1rem',
-                        }}>
-                        <img
-                            height={50}
-                            src={cell.getValue()}
-                            loading="lazy"
-                        />
-                    </Box>
-
-                ),
-            },
+                accessorKey: 'action',
+                header: 'Action',
+                //custom conditional format and styling
+                Cell: ({cell, row}) => (
+                    <>
+                    <ButtonChild row={row} testOnClick={testOnClick}/>
+                    </>
+                )
+            }
         ],
         [],
     );
+
+    const testOnClick = (v) => {
+        let index = -1;
+        for(let i=0; i<dataOri.length; i++) {
+            if(dataOri[i].id === v.original.id) {
+                index = i;
+                break;
+            }
+        }
+
+        console.log("Len=" + dataOri.length + " Title=" + v.original.title + "  ID Ori=" + v.original.id + " , remove index=" + index);
+        dataOri.splice(index, 1);
+        setData([...dataOri]);
+    }
 
     const getData = async () => {
         setLoading(true);
@@ -80,8 +106,12 @@ const ProductList = () => {
             if (v.isError) {
                 setPageStatus({isError: v.isError, message: v.message});
                 setData([]);
+                setDataOri([]);
             } else {
-                setData(v.data.products);
+                let vv = v.data.products;
+                setData(vv);
+                setDataOri(vv);
+                console.log("Data ORI len=" + dataOri.length)
             }
             setLoading(false);
         });
@@ -90,6 +120,8 @@ const ProductList = () => {
         setLoading(true);
         getData();
     }, []);
+
+
 
     const handleDeleteRow = useCallback(
         (row) => {

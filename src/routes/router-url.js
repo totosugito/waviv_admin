@@ -10,7 +10,8 @@ export function getRouterUrl(key, prefix="/") {
         "login": prefix + "login",
         "dashboard": prefix + "dashboard",
         "product": prefix + "product",
-        "product-list": prefix + "product-list"
+        "product-list": prefix + "product-list",
+        "ui-avatar": prefix + "ui-avatar"
     }
     return(routers[key])
 }
