@@ -11,7 +11,8 @@ export function getRouterUrl(key, prefix="/") {
         "dashboard": prefix + "dashboard",
         "product": prefix + "product",
         "product-list": prefix + "product-list",
-        "ui-avatar": prefix + "ui-avatar"
+        "ui-avatar": prefix + "ui-avatar",
+        "upwork-landing-page": prefix + "upwork-landing-page",
     }
     return(routers[key])
 }

@@ -23,7 +23,7 @@ const LandingPage = () => {
     ];
 
     useEffect(() => {
-        document.title = "Landing page"
+        document.title = "Upwork Landing page"
     }, []);
 
     return (

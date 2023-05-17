@@ -10,11 +10,11 @@ import TestRoute from "../test/test-route";
 
 export default function RouterWeb() {
     return useRoutes([
+        TestRoute,
         SingleRoute,
         AuthenticationRoute,
         DashboardRoute,
         UsersRoute,
         ProductRoute,
-        TestRoute
     ]);
 }
