@@ -13,6 +13,10 @@ export function getRouterUrl(key, prefix="/") {
         "product-list": prefix + "product-list",
         "ui-avatar": prefix + "ui-avatar",
         "upwork-landing-page": prefix + "upwork-landing-page",
+        "landing-admin": prefix + "landing-admin",
+        "landing-author": prefix + "landing-author",
+        "landing-learner": prefix + "landing-learner",
+        "landing-admin-integration": prefix + "landing-admin-integration",
     }
     return(routers[key])
 }
