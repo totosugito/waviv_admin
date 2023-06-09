@@ -17,6 +17,8 @@ export function getRouterUrl(key, prefix="/") {
         "landing-author": prefix + "landing-author",
         "landing-learner": prefix + "landing-learner",
         "landing-admin-integration": prefix + "landing-admin-integration",
+        "project-list": prefix + "project-list",
+        "project-add": prefix + "project-add",
     }
     return(routers[key])
 }

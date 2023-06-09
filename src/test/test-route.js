@@ -9,6 +9,8 @@ const LandingAdmin = Loadable(lazy(() => import('./landing-admin')));
 const LandingAuthor = Loadable(lazy(() => import('./landing-author')));
 const LandingLearner = Loadable(lazy(() => import('./landing-learner')));
 const LandingAdminIntegration = Loadable(lazy(() => import('./landing-admin-integration')));
+const ProjectList = Loadable(lazy(() => import('./project-list')));
+const ProjectAdd = Loadable(lazy(() => import('./project-add')));
 
 const TestRoute = {
     element: <MinimalLayout/>,
@@ -44,6 +46,14 @@ const TestRoute = {
         {
             path: getRouterUrl("landing-admin-integration", ""),
             element: <LandingAdminIntegration/>
+        },
+        {
+            path: getRouterUrl("project-list", ""),
+            element: <ProjectList/>
+        },
+        {
+            path: getRouterUrl("project-add", ""),
+            element: <ProjectAdd/>
         },
     ]
 };
