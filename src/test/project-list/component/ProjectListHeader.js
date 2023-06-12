@@ -1,8 +1,27 @@
-import {Button, Grid, MenuItem, TextField} from "@mui/material";
+import {Button, Grid, TextField} from "@mui/material";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import {useNavigate} from "react-router-dom";
+import React from "react"
+import ButtonMenuSort from "./ButtonMenuSort";
 
 function ProjectListHeader(props) {
+    const styles = {
+        gridSearch: {
+            width: "50%",
+            minWidth: "30%",
+            maxWidth: "100%"
+        },
+        textSearch: {
+            width: "100%",
+            marginRight: "10px",
+        },
+        buttonAdd: {
+            width: "80px",
+            marginLeft: "10px",
+            pt: "6px",
+            pb: "6px",
+        }
+    }
     const navigate = useNavigate()
     const currencies = [
         {
@@ -21,24 +40,14 @@ function ProjectListHeader(props) {
 
     return (
         <>
-            <Grid container alignItems="center" spacing={2}>
-                <Grid item xs={7}>
-                    <TextField label="Input" fullWidth size={'small'} label={'Find a project ...'}/>
+            <Grid container alignItems="center" justifyContent="center">
+                <Grid item sx={styles.gridSearch}>
+                    <TextField fullWidth size={'small'} label={'Find a project ...'} sx={styles.textSearch}/>
                 </Grid>
-                <Grid item xs={5} alignItems={'right'} alignContent={'right'} textAlign={'right'} sx={{minWidth: '300px'}}>
-                    <TextField
-                        display={'inline'}
-                        select
-                        defaultValue="last_updated"
-                        size={'small'}>
-                        {currencies.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                    <Button variant="contained" size={'small'} startIcon={<AddCircleOutlineIcon/>}
-                            sx={{ml: 2, p: "5px"}} onClick={()=> navigate("/project-add")}>New</Button>
+                <Grid item justifyContent={"right"} sx={{width: "200px", ml: 2}}>
+                    <ButtonMenuSort/>
+                    <Button sx={styles.buttonAdd} variant="contained" size={'small'} startIcon={<AddCircleOutlineIcon/>}
+                            onClick={() => navigate("/project-add")}>New</Button>
                 </Grid>
             </Grid>
         </>

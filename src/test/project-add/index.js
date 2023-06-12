@@ -9,7 +9,7 @@ const ProjectAdd = () => {
     }, []);
 
     const onSubmitClicked = (e) => {
-        console.log("-----")
+        console.log("Execute form clicked")
         console.log(JSON.stringify(e))
     }
     return (

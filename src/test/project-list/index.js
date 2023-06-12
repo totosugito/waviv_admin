@@ -3,6 +3,7 @@ import UserNavBar from "./component/UserNavBar";
 import ProjectListHeader from "./component/ProjectListHeader";
 import {Container, Divider, Toolbar} from "@mui/material";
 import ProjectItem from "./component/ProjectItem";
+import ButtonItemNavigation from "./component/ButtonItemNavigation";
 
 const ProjectList = () => {
     useEffect(() => {
@@ -40,6 +41,7 @@ const ProjectList = () => {
                 <ProjectListHeader/>
                 <Divider sx={{mt: 1, mb: 1}}/>
                 {projects.map((object, i) => <ProjectItem data={object} key={i}/>)}
+                <ButtonItemNavigation/>
             </Container>
         </>
     )

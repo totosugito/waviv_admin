@@ -1,12 +1,18 @@
 import {Box, Chip, Divider, Link, Stack, Typography} from "@mui/material";
+import {useTheme} from "@mui/material/styles";
 
 
 function ProjectItem(props) {
+    const theme = useTheme()
+
     const styles = {
         title: {
             fontSize: "150%"
         },
-        desc: {},
+        desc: {
+            color: theme.palette.text.secondary,
+            mb: 1
+        },
         divider: {
             mt: 1,
             mb: 1
@@ -17,6 +23,7 @@ function ProjectItem(props) {
             size: 'small'
         },
         updated: {
+            color: theme.palette.text.secondary,
             mt: 1,
             fontSize: "80%",
         }

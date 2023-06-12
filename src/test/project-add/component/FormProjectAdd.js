@@ -1,21 +1,14 @@
 import {
     Button,
-    FormHelperText,
     Grid, InputAdornment,
     InputLabel,
-    OutlinedInput,
     Stack,
     TextField,
     Typography
 } from "@mui/material";
-import * as Yup from "yup";
-import {useForm, Controller} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import React from 'react';
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css";
-import DateRangePicker from "react-date-range/dist/components/DateRangePicker";
-import DateRange from "react-date-range/dist/components/DateRange";
+import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 
 function FormProjectAdd(props) {
     const styles = {
@@ -25,113 +18,103 @@ function FormProjectAdd(props) {
             mb: 2
         }
     }
-    const [dateRanges, setDateRanges] = React.useState([
-        {
-            startDate: new Date(),
-            endDate: null,
-            key: "selection"
-        }
-    ]);
 
-    const onUpdateDateRange = () => {
-        setFormDefaultValue({...formDefaultValue, date: dateRanges})
-    };
-
-    const [formDefaultValue, setFormDefaultValue] = React.useState({
-        name: '',
-        desc: "",
-        budget: 0,
-        date: {
-            startDate: new Date(),
-            endDate: new Date(),
-            key: 'selection',
-        }
-    })
-
-    const handleSelect = (ranges) =>{
-        setDateRanges(ranges["selection"])
-        setFormDefaultValue({...formDefaultValue, date: ranges["selection"]})
+    const onChange = (e) => {
+        setFormValue((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
     }
 
-    const registerSchema = Yup.object().shape({
-        name: Yup.string().max(255).required('Project name is required'),
-        budget: Yup.number().positive().required('Budget is required')
-    });
-    const {control, register, handleSubmit, formState: {errors}} = useForm({
-        defaultValues: formDefaultValue,
-        resolver: yupResolver(registerSchema)
-    });
+    const [formValue, setFormValue] = React.useState({
+        name: '',
+        desc: "",
+        budget: "",
+        startDate: null,
+        finishDate: null,
+    })
+    const {name, desc, budget, startDate, finishDate} = formValue
 
     return (
         <>
             <Typography sx={styles.title}>Create a new project</Typography>
 
-            <form noValidate onSubmit={handleSubmit(props.onSubmitClicked)}>
+            <form onSubmit={() => props.onSubmitClicked(formValue)}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Stack spacing={1}>
-                            <InputLabel >Project Name*</InputLabel>
-                            <OutlinedInput
+                            <InputLabel>Project Name*</InputLabel>
+                            <TextField
+                                required
                                 type="text"
                                 placeholder="Enter project name"
-                                {...register("name")}
-                                error={!!errors.name}
+                                name='name'
+                                value={name}
+                                onChange={onChange}
                             />
-                            {errors.name && (
-                                <FormHelperText error>
-                                    {errors.name?.message}
-                                </FormHelperText>
-                            )}
                         </Stack>
                     </Grid>
                     <Grid item xs={12}>
                         <Stack spacing={1}>
-                            <InputLabel >Project Description</InputLabel>
+                            <InputLabel>Project Description</InputLabel>
                             <TextField
                                 multiline
                                 minRows={4}
                                 type="text"
                                 placeholder="Enter project description"
-                                {...register("desc")}
+                                name='desc'
+                                value={desc}
+                                onChange={onChange}
                             />
                         </Stack>
                     </Grid>
                     <Grid item xs={12}>
                         <Stack spacing={1}>
-                            <InputLabel >Budget*</InputLabel>
+                            <InputLabel>Budget*</InputLabel>
                             <TextField
+                                required
                                 type="number"
                                 InputProps={{
                                     startAdornment: <InputAdornment position="start">Rp</InputAdornment>,
                                 }}
                                 placeholder="Enter project budget"
-                                {...register("budget")}
-                                error={!!errors.budget}
+                                name='budget'
+                                value={budget}
+                                onChange={onChange}
                             />
-                            {errors.budget && (
-                                <FormHelperText error>
-                                    {errors.budget?.message}
-                                </FormHelperText>
-                            )}
                         </Stack>
                     </Grid>
-                    <Grid item xs={12}>
-                        <Stack spacing={1}>
-                            <InputLabel >Select Date*</InputLabel>
-                            <Controller
-                                name="date-ranges"
-                                control={control}
-                                render={({ field }) => (
-                            <DateRange
-                                {...register("date")}
-                                onChange={(item) => {
-                                    handleSelect(item);
-                                }}
-                                moveRangeOnFirstSelection={false}
-                                ranges={[formDefaultValue["date"]]}
-                            />
-                                )}/>
-                        </Stack>
+                    <Grid item container>
+                        <Grid sx={{width: "200px", mr: 1}}>
+                            <Stack spacing={1}>
+                                <InputLabel>Start Date*</InputLabel>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker
+                                        required
+                                        value={startDate}
+                                        onChange={(newValue) => setFormValue({
+                                            ...formValue,
+                                            startDate: newValue
+                                        })}
+                                    />
+                                </LocalizationProvider>
+                            </Stack>
+                        </Grid>
+                        <Grid sx={{width: "200px"}}>
+                            <Stack spacing={1}>
+                                <InputLabel>Finish Date*</InputLabel>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker
+                                        required
+                                        value={finishDate}
+                                        onChange={(newValue) => setFormValue({
+                                            ...formValue,
+                                            finishDate: newValue
+                                        })}
+                                    />
+                                </LocalizationProvider>
+                            </Stack>
+                        </Grid>
                     </Grid>
 
                     <Grid item xs={12}>
@@ -142,7 +125,7 @@ function FormProjectAdd(props) {
                             type="submit"
                             variant="contained"
                             color="primary">
-                            Create Account
+                            Create Project
                         </Button>
                     </Grid>
                 </Grid>
