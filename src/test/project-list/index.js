@@ -65,7 +65,7 @@ const ProjectList = () => {
         })
     }
 
-    const update_view = (key, value) => {
+    const set_pagination_page = (key, value) => {
         let new_value = {...pageParam}
         new_value[key] = value
         setPageParam(new_value)
@@ -113,8 +113,8 @@ const ProjectList = () => {
 
                 {pageParam["needPagination"] &&
                     <PagePagination data={pageParam}
-                                    onClickBack={() => update_view("page", pageParam["page"] - 1)}
-                                    onClickNext={() => update_view("page", pageParam["page"] + 1)}
+                                    onClickBack={() => set_pagination_page("page", pageParam["page"] - 1)}
+                                    onClickNext={() => set_pagination_page("page", pageParam["page"] + 1)}
                     />
                 }
             </Container>
