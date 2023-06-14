@@ -9,11 +9,11 @@ function PagePagination(props) {
         <>
             <Box alignContent={'center'} alignItems={'center'} textAlign={'center'}>
                 <Button startIcon={<ChevronLeftIcon/>} sx={{mr: 2}} disabled={props.data["page"] === 1}
-                        onClick={props.onClickBack}>
+                        onClick={props.onBackClick}>
                     Previous
                 </Button>
                 <Button endIcon={<ChevronRightIcon/>} sx={{ml: 2}} disabled={props.data["isLast"]}
-                        onClick={props.onClickNext}>
+                        onClick={props.onNextClick}>
                     Next
                 </Button>
             </Box>

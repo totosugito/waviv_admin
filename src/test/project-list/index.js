@@ -113,8 +113,8 @@ const ProjectList = () => {
 
                 {pageParam["needPagination"] &&
                     <PagePagination data={pageParam}
-                                    onClickBack={() => set_pagination_page("page", pageParam["page"] - 1)}
-                                    onClickNext={() => set_pagination_page("page", pageParam["page"] + 1)}
+                                    onBackClick={() => set_pagination_page("page", pageParam["page"] - 1)}
+                                    onNextClick={() => set_pagination_page("page", pageParam["page"] + 1)}
                     />
                 }
             </Container>
