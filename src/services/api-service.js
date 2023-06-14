@@ -11,17 +11,6 @@ export const httpGet = async (url, config = {}) => {
                 : err.message;
         return ({isError: true, data: {}, message: message});
     }
-    //     .then((response) => {
-    //     console.log(JSON.stringify(response.data))
-    //     return (response.data);
-    // }).catch((err) => {
-    //     console.log("fail")
-    //     const message =
-    //         err.response && err.response.data.message
-    //             ? err.response.data.message
-    //             : err.message;
-    //     return(message);
-    // });
 }
 
 export const httpPost = (url, param, key) => async (dispatch) => {

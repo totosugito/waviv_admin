@@ -7,7 +7,7 @@ function ProjectItem(props) {
 
     const styles = {
         title: {
-            fontSize: "150%"
+            fontSize: "130%"
         },
         desc: {
             color: theme.palette.text.secondary,
@@ -18,25 +18,39 @@ function ProjectItem(props) {
             mb: 1
         },
         chip: {
-            fontSize: "90%",
+            color: theme.palette.text.secondary,
+            borderColor: theme.palette.text.secondary,
+            fontSize: "75%",
             borderRadius: 4,
             size: 'small'
+        },
+        textLabel: {
+
+        },
+        textValue: {
+            color: theme.palette.text.secondary,
         },
         updated: {
             color: theme.palette.text.secondary,
             mt: 1,
-            fontSize: "80%",
+            fontSize: "85%",
         }
     }
     return (
         <>
             <Box>
                 <Link sx={styles.title}>{props.data["title"]}</Link>
-                <Typography sx={styles.desc}>{props.data["desc"]}</Typography>
                 <Stack direction="row" spacing={1}>
-                    {props.data["tags"].map((tag, i) => <Chip sx={styles.chip} key={i} label={tag} variant="outlined" size={'small'} color={'primary'}/>)}
+                    {props.data["tags"].map((tag, i) =>
+                        <Chip sx={styles.chip} key={i} label={tag} variant="outlined" size={'small'} color={'primary'}
+                              onClick={() => props.onTagClick(tag)}/>
+                    )}
                 </Stack>
-                <Typography sx={styles.updated}>Updated on : {props.data["updated"]}</Typography>
+                <Stack direction="row" spacing={1} sx={{mt: 1}}>
+                    <Typography sx={styles.textLabel}>Year : </Typography><Typography sx={styles.textValue}>{props.data["year"]}</Typography>
+                    <div style={{width: "10px"}}/>
+                    <Typography sx={styles.textLabel}>Phase : </Typography><Typography sx={styles.textValue}>{props.data["phase"]}</Typography>
+                </Stack>
                 <Divider sx={styles.divider}/>
             </Box>
         </>

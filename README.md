@@ -10,3 +10,6 @@ Waviv Admin Template
 
 # Dashboard page
 ![Demo Image](./images/demo01.png)
+
+
+"proxy": "https://dummyjson.com",

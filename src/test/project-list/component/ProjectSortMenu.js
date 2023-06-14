@@ -4,11 +4,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CheckIcon from '@mui/icons-material/Check';
 import {useTheme} from "@mui/material/styles";
 
-function ButtonMenuSort(props) {
+function ProjectSortMenu(props) {
     const theme = useTheme()
     const styles = {
         button: {
-            width: "80px",
+            width: "100px",
             pt: "5px",
             pb: "5px",
             color: theme.palette.text.primary,
@@ -16,12 +16,13 @@ function ButtonMenuSort(props) {
         },
     }
 
-    const [checkedMenu, setCheckedMenu] = React.useState(0);
+    const [checkedMenu, setCheckedMenu] = React.useState("");
     const [anchorMenu, setAnchorMenu] = React.useState(null);
     const openMenu = Boolean(anchorMenu);
     const handleSelectMenu = (v) => {
-        setAnchorMenu(null);
+        setAnchorMenu(null)
         setCheckedMenu(v)
+        props.onFilterSelected(v)
     }
 
     const handleCloseMenu = () => {
@@ -46,25 +47,25 @@ function ButtonMenuSort(props) {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={()=>handleSelectMenu(0)}>
+                <MenuItem onClick={()=>handleSelectMenu(props["filterKey"][0])}>
                     <ListItemIcon>
-                        {(checkedMenu === 0) &&
+                        {(checkedMenu === props["filterKey"][0]) &&
                             <CheckIcon fontSize="small"/>
                         }
                     </ListItemIcon>
                     <Typography>Last updated</Typography>
                 </MenuItem>
-                <MenuItem onClick={()=>handleSelectMenu(1)}>
+                <MenuItem onClick={()=>handleSelectMenu(props["filterKey"][1])}>
                     <ListItemIcon>
-                        {(checkedMenu === 1) &&
+                        {(checkedMenu === props["filterKey"][1]) &&
                             <CheckIcon fontSize="small"/>
                         }
                     </ListItemIcon>
                     <Typography>Name</Typography>
                 </MenuItem>
-                <MenuItem onClick={()=>handleSelectMenu(2)}>
+                <MenuItem onClick={()=>handleSelectMenu(props["filterKey"][2])}>
                     <ListItemIcon>
-                        {(checkedMenu === 2) &&
+                        {(checkedMenu === props["filterKey"][2]) &&
                             <CheckIcon fontSize="small"/>
                         }
                     </ListItemIcon>
@@ -75,4 +76,4 @@ function ButtonMenuSort(props) {
     )
 }
 
-export default ButtonMenuSort
+export default ProjectSortMenu
