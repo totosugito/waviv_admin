@@ -13,7 +13,7 @@ function TextFieldTimer(props) {
     const [data, setData] = React.useState("");
 
     useEffect(() => {
-        const timeOutId = setTimeout(() => props.onTextChanged(data), 500);
+        const timeOutId = setTimeout(() => props.onTextChanged(data), props.timeout);
         return () => clearTimeout(timeOutId);
     }, [data]);
 

@@ -98,7 +98,7 @@ const ProjectList = () => {
 
                 <Stack direction="row" spacing={1}>
 
-                    <TextFieldTimer label={'Find a project ...'} onTextChanged={(v) => set_sort_by_key("text", v)}/>
+                    <TextFieldTimer label={'Find a project ...'} timeout={500} onTextChanged={(v) => set_sort_by_key("text", v)}/>
 
                     {/*  ADD FILTER BY Project type */}
                     <ButtonMenu title={"Project Type"}
