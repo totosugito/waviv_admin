@@ -5,26 +5,20 @@ import ProjectItem from "./component/ProjectItem";
 import PagePagination from "./component/PagePagination";
 import {getRouterApi} from "../../routes/router-api";
 import {httpGet} from "../../services/api-service";
-import ProjectSortMenu from "./component/ProjectSortMenu";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import ButtonMenu from "./component/ButtonMenu";
 
 const ProjectList = () => {
     const navigate = useNavigate()
     const styles = {
-        gridSearch: {
-            width: "50%",
-            minWidth: "30%",
-            maxWidth: "100%"
-        },
         textSearch: {
             width: "100%",
             marginRight: "10px",
         },
         buttonAdd: {
-            width: "100px",
-            marginLeft: "10px",
+            minWidth: "100px",
             pt: "6px",
             pb: "6px",
         }
@@ -32,10 +26,10 @@ const ProjectList = () => {
 
     const defaultPageParam = {
         total: 1, page: 1, limit: 5, isLast: false, needPagination: true,
-        tags: "", sort: "",
+        tags: "", sort: "", order: "", type: ""
     }
     const [data, setData] = useState({projects: []});
-    const [pageParam, setPageParam] = useState({...defaultPageParam})
+    const [pageParam, setPageParam] = useState(defaultPageParam)
 
     useEffect(() => {
         document.title = "Project List"
@@ -53,11 +47,17 @@ const ProjectList = () => {
             param_url += "&tags=" + obj["tags"]
         if (obj["sort"] !== "")
             param_url += "&sort=" + obj["sort"]
+        if (obj["order"] !== "")
+            param_url += "&order=" + obj["order"]
+        if (obj["type"] !== "")
+            param_url += "&type=" + obj["type"]
+
+        console.log(param_url)
         return {value: param_url}
     }
 
     const set_sort_by_key = (key, value) => {
-        let new_value = {...defaultPageParam}
+        let new_value = pageParam
         new_value[key] = value
         setPageParam(new_value)
         let http_param = obj_to_param(new_value)
@@ -98,10 +98,36 @@ const ProjectList = () => {
             <Container>
                 <Toolbar sx={{mt: 2}}/>
 
-                <Stack direction="row">
+                <Stack direction="row" spacing={1}>
                     <TextField fullWidth size={'small'} label={'Find a project ...'} sx={styles.textSearch}/>
-                    <ProjectSortMenu filterKey={["date", "name", "star"]} selected={pageParam}
-                                     onFilterSelected={(v) => set_sort_by_key("sort", v)}/>
+
+                    {/*  ADD FILTER BY Project type */}
+                    <ButtonMenu title={"Project Type"}
+                                menus={[{"key": "all", text: "All"},
+                                    {"key": "public", text: "Public Project"},
+                                    {"key": "private", text: "Private Project"}
+                                ]}
+                                selected={pageParam["type"]}
+                                onFilterSelected={(v) => set_sort_by_key("type", v)}
+                    />
+
+                    {/*  ADD FILTER BY Sorting type */}
+                    <ButtonMenu title={"Sorting"}
+                                menus={[{"key": "date", text: "Last updated"},
+                                    {"key": "name", text: "Name"},
+                                    {"key": "star", text: "Star"}]}
+                                selected={pageParam["sort"]}
+                                onFilterSelected={(v) => set_sort_by_key("sort", v)}
+                    />
+
+                    {/*  ADD FILTER BY Sorting order */}
+                    <ButtonMenu title={"Sort Order"}
+                                menus={[{"key": "desc", text: "Descending"},
+                                    {"key": "asc", text: "Ascending"}]}
+                                selected={pageParam["order"]}
+                                onFilterSelected={(v) => set_sort_by_key("order", v)}
+                    />
+
                     <Button sx={styles.buttonAdd} variant="contained" size={'small'} startIcon={<AddCircleOutlineIcon/>}
                             onClick={() => navigate("/project-add")}>New</Button>
                 </Stack>

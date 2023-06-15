@@ -1,16 +1,20 @@
 import {
-    Button,
+    Box,
+    Button, Container,
     Grid, InputAdornment,
-    InputLabel,
-    Stack,
+    InputLabel, Paper,
+    Stack, Tab, Tabs,
     TextField,
     Typography
 } from "@mui/material";
 import React from 'react';
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
+import TabPanel from "./TabPanel";
+import {useTheme} from "@mui/material/styles";
 
 function FormProjectAdd(props) {
+    const theme = useTheme()
     const styles = {
         title: {
             fontSize: '150%',
@@ -18,6 +22,12 @@ function FormProjectAdd(props) {
             mb: 2
         }
     }
+
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
     const onChange = (e) => {
         setFormValue((prevState) => ({
@@ -117,6 +127,54 @@ function FormProjectAdd(props) {
                         </Grid>
                     </Grid>
 
+                    <Container sx={{width: "100%"}}>
+                        <Tabs
+                            value={value}
+                            onChange={handleChange}
+                            textColor="inherit"
+                            variant="fullWidth"
+                        >
+                            <Tab label="Primary" sx={{
+                                backgroundColor: theme.palette.warning.main,
+                                borderRadius: "5px",
+                                color: theme.palette.warning.contrastText
+                            }}/>
+                            <Tab label="Secondary" sx={{
+                                backgroundColor: theme.palette.primary.main,
+                                borderRadius: "5px",
+                                color: theme.palette.primary.contrastText
+                            }}/>
+                            <Tab label="Optional" sx={{
+                                backgroundColor: theme.palette.error.main,
+                                borderRadius: "5px",
+                                color: theme.palette.error.contrastText
+                            }}/>
+                        </Tabs>
+                        <TabPanel value={value} index={0}>
+                            <Container sx={{width: "100%", mt: 1}}>
+                                <Stack spacing={1}>
+                                    <InputLabel>Budget*</InputLabel>
+                                    <TextField
+                                        required
+                                        type="number"
+                                        InputProps={{
+                                            startAdornment: <InputAdornment position="start">Rp</InputAdornment>,
+                                        }}
+                                        placeholder="Enter project budget"
+                                        name='budget'
+                                        value={budget}
+                                        onChange={onChange}
+                                    />
+                                </Stack>
+                            </Container>
+                        </TabPanel>
+                        <TabPanel value={value} index={1} dir={theme.direction}>
+                            Item Two
+                        </TabPanel>
+                        <TabPanel value={value} index={2} dir={theme.direction}>
+                            Item Three
+                        </TabPanel>
+                    </Container>
                     <Grid item xs={12}>
                         <Button
                             disableElevation

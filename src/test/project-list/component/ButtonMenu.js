@@ -8,7 +8,7 @@ function ProjectSortMenu(props) {
     const theme = useTheme()
     const styles = {
         button: {
-            width: "100px",
+            minWidth: "120px",
             pt: "5px",
             pb: "5px",
             color: theme.palette.text.primary,
@@ -36,7 +36,7 @@ function ProjectSortMenu(props) {
     return (
         <>
             <Button sx={styles.button} variant="outlined" onClick={handleClickMenu} size={'small'}
-                    endIcon={<ExpandMoreIcon/>}>Sort</Button>
+                    endIcon={<ExpandMoreIcon/>}>{props.title}</Button>
 
             <Menu
                 id="basic-menu"
@@ -47,30 +47,16 @@ function ProjectSortMenu(props) {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={()=>handleSelectMenu(props["filterKey"][0])}>
-                    <ListItemIcon>
-                        {(checkedMenu === props["filterKey"][0]) &&
-                            <CheckIcon fontSize="small"/>
-                        }
-                    </ListItemIcon>
-                    <Typography>Last updated</Typography>
-                </MenuItem>
-                <MenuItem onClick={()=>handleSelectMenu(props["filterKey"][1])}>
-                    <ListItemIcon>
-                        {(checkedMenu === props["filterKey"][1]) &&
-                            <CheckIcon fontSize="small"/>
-                        }
-                    </ListItemIcon>
-                    <Typography>Name</Typography>
-                </MenuItem>
-                <MenuItem onClick={()=>handleSelectMenu(props["filterKey"][2])}>
-                    <ListItemIcon>
-                        {(checkedMenu === props["filterKey"][2]) &&
-                            <CheckIcon fontSize="small"/>
-                        }
-                    </ListItemIcon>
-                    <Typography>Stars</Typography>
-                </MenuItem>
+                {props["menus"].map((menu, i) =>
+                    <MenuItem key={menu["key"]} onClick={()=>handleSelectMenu(menu["key"])}>
+                        <ListItemIcon>
+                            {(checkedMenu === menu["key"]) &&
+                                <CheckIcon fontSize="small"/>
+                            }
+                        </ListItemIcon>
+                        <Typography>{menu["text"]}</Typography>
+                    </MenuItem>
+                )}
             </Menu>
         </>
     )
