@@ -9,14 +9,11 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import ButtonMenu from "./component/ButtonMenu";
+import TextFieldTimer from "./component/TextFieldTimer";
 
 const ProjectList = () => {
     const navigate = useNavigate()
     const styles = {
-        textSearch: {
-            width: "100%",
-            marginRight: "10px",
-        },
         buttonAdd: {
             minWidth: "100px",
             pt: "6px",
@@ -52,7 +49,6 @@ const ProjectList = () => {
         if (obj["type"] !== "")
             param_url += "&type=" + obj["type"]
 
-        console.log(param_url)
         return {value: param_url}
     }
 
@@ -92,6 +88,10 @@ const ProjectList = () => {
         });
     }
 
+    const onSearchTextFieldChanged = (v) => {
+        console.log(v)
+    }
+
     return (
         <>
             <UserNavBar/>
@@ -99,7 +99,8 @@ const ProjectList = () => {
                 <Toolbar sx={{mt: 2}}/>
 
                 <Stack direction="row" spacing={1}>
-                    <TextField fullWidth size={'small'} label={'Find a project ...'} sx={styles.textSearch}/>
+
+                    <TextFieldTimer label={'Find a project ...'} onTextChanged={onSearchTextFieldChanged}/>
 
                     {/*  ADD FILTER BY Project type */}
                     <ButtonMenu title={"Project Type"}
