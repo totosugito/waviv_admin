@@ -2,7 +2,7 @@ import {
     Box,
     Button, Container,
     Grid, InputAdornment,
-    InputLabel, Paper,
+    InputLabel,
     Stack, Tab, Tabs,
     TextField,
     Typography

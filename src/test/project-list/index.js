@@ -23,7 +23,7 @@ const ProjectList = () => {
 
     const defaultPageParam = {
         total: 1, page: 1, limit: 5, isLast: false, needPagination: true,
-        tags: "", sort: "", order: "", type: ""
+        tags: "", sort: "", order: "", type: "", text: ""
     }
     const [data, setData] = useState({projects: []});
     const [pageParam, setPageParam] = useState(defaultPageParam)
@@ -48,6 +48,8 @@ const ProjectList = () => {
             param_url += "&order=" + obj["order"]
         if (obj["type"] !== "")
             param_url += "&type=" + obj["type"]
+        if (obj["text"] !== "")
+            param_url += "&text=" + obj["text"]
 
         return {value: param_url}
     }
@@ -88,10 +90,6 @@ const ProjectList = () => {
         });
     }
 
-    const onSearchTextFieldChanged = (v) => {
-        console.log(v)
-    }
-
     return (
         <>
             <UserNavBar/>
@@ -100,7 +98,7 @@ const ProjectList = () => {
 
                 <Stack direction="row" spacing={1}>
 
-                    <TextFieldTimer label={'Find a project ...'} onTextChanged={onSearchTextFieldChanged}/>
+                    <TextFieldTimer label={'Find a project ...'} onTextChanged={(v) => set_sort_by_key("text", v)}/>
 
                     {/*  ADD FILTER BY Project type */}
                     <ButtonMenu title={"Project Type"}
