@@ -12,6 +12,9 @@ const LandingAdminIntegration = Loadable(lazy(() => import('./landing-admin-inte
 const ProjectList = Loadable(lazy(() => import('./project-list')));
 const ProjectAdd = Loadable(lazy(() => import('./project-add')));
 
+const UserDashboard = Loadable(lazy(() => import('./user/dashboard')));
+const UserPhase = Loadable(lazy(() => import('./user/phase')));
+
 const TestRoute = {
     element: <MinimalLayout/>,
     children: [
@@ -54,6 +57,15 @@ const TestRoute = {
         {
             path: getRouterUrl("project-add", ""),
             element: <ProjectAdd/>
+        },
+
+        {
+            path: getRouterUrl("user-dashboard", ""),
+            element: <UserDashboard/>
+        },
+        {
+            path: getRouterUrl("user-phase", ""),
+            element: <UserPhase/>
         },
     ]
 };
