@@ -14,6 +14,7 @@ const ProjectAdd = Loadable(lazy(() => import('./project-add')));
 
 const UserDashboard = Loadable(lazy(() => import('./user/dashboard')));
 const UserPhase = Loadable(lazy(() => import('./user/phase')));
+const DemoDialog = Loadable(lazy(() => import('./demo-dialog')));
 
 const TestRoute = {
     element: <MinimalLayout/>,
@@ -66,6 +67,10 @@ const TestRoute = {
         {
             path: getRouterUrl("user-phase", ""),
             element: <UserPhase/>
+        },
+        {
+            path: getRouterUrl("demo-dialog", ""),
+            element: <DemoDialog/>
         },
     ]
 };
