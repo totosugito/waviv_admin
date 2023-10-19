@@ -23,6 +23,7 @@ export function getRouterUrl(key, prefix="/") {
         "user-dashboard": prefix + "user-dashboard",
         "user-phase": prefix + "user-phase/:phase",
         "demo-dialog": prefix + "demo-dialog",
+        "ui-test": prefix + "ui-test",
     }
     return(routers[key])
 }
